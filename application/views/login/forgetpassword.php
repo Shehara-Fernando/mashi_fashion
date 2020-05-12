@@ -18,12 +18,11 @@
 				<div class="row justify-content-center">
 					<div class="col-md-4">
 						<div class="card shadow-lg border-0 rounded-lg mt-5">
-							<div class="card-header"><h3 class="text-center font-weight-light m-4">Login</h3></div>
+							<div class="card-header"><h3 class="text-center font-weight-light m-4">Forget password</h3></div>
 							<div class="card-body">
 								<form id="login" action="<?php echo base_url('login/Login/login_user');?>" method="post">
 									<div class="form-group"><label class="small mb-1" for="inputEmailAddress">Email</label><input class="form-control" id="user_email" name="user_email" type="email" placeholder="Enter email address" /></div>
 									<div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"><button class="btn btn-block btn-primary" type="submit" >Send Email</button></div>
-									<div class="form-group d-flex align-items-center justify-content-between mt-2 mb-0"><a class="small" href="<?php echo base_url('login/RetypePassword')?>">Resset Password?</a></div>
 								</form>
 							</div>
 							<div class="card-footer text-center m-2">

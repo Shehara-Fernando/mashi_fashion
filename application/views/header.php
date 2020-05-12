@@ -58,14 +58,7 @@
 					<a class="nav-link" href="<?php echo  base_url('dashboard/dashboard');?>"
 					><div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
 						Dashboard</a>
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers"
-					><div class="sb-nav-link-icon"><i class="fas fa-user "></i></div>
-						Users
-						<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
-						></a>
-					<div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="<?php echo base_url('users/users');?> ">Users</a></nav>
-					</div>
+
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory" aria-expanded="false" aria-controls="collapseInventory"
 					><div class="sb-nav-link-icon"><i class="fas fa-shopping-basket "></i></div>
 						Inventory
@@ -131,6 +124,14 @@
 						></a>
 					<div class="collapse" id="collapseReports" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="<?php echo base_url('reports/reports');?>>Reports</a><a class="nav-link" href="../reports/incomeexp.php">Income AND Expenditure Reports</a><a class="nav-link" href="../reports/userreport.php">User Reports</a><a class="nav-link" href="../reports/stockreport.php">Stock Reports</a><a class="nav-link" href="../reports/productionreports.php">Production Reports</a></nav>
+					</div>
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers"
+					><div class="sb-nav-link-icon"><i class="fas fa-user "></i></div>
+						Users
+						<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div
+						></a>
+					<div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+						<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="<?php echo base_url('users/users');?> ">Users</a></nav>
 					</div>
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBackups" aria-expanded="false" aria-controls="collapseBackups"
 					><div class="sb-nav-link-icon"><i class="fas fa-paperclip "></i></div>

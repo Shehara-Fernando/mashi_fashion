@@ -11,6 +11,10 @@ class Inventory extends CI_Controller {
 	}
 
 	public function  add_item(){
+
+
+
+
 		$items = array(
 		"item_code" => $this->input->post('item_code'),
 		"cat_id" => $this->input->post('cat_id'),

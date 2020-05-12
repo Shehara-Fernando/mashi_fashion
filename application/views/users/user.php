@@ -57,11 +57,11 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="user_fname">First Name</label>
-                                        <input type="text" class="form-control" name="user_fname" id="userfname"  placeholder="Enter First Name" data-validation="required">
+                                        <input type="text" class="form-control" name="user_fname" id="user_fname"  placeholder="Enter First Name" data-validation="required">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="user_lname">Last Name</label>
-                                        <input type="text" class="form-control" name="user_lname" id="userlname"  placeholder="Enter Last Name" data-validation="required">
+                                        <input type="text" class="form-control" name="user_lname" id="user_lname"  placeholder="Enter Last Name" data-validation="required">
                                     </div>
                                 </div>
 
@@ -72,36 +72,36 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="user_tel">Telephone Number</label>
-                                        <input type="tel" class="form-control" name="user_tel" id="usertel"  placeholder="Enter Telephone Number" data-validation="length" data-validation-length="9-10">
+                                        <input type="tel" class="form-control" name="user_tel" id="user_tel"  placeholder="Enter Telephone Number" data-validation="length" data-validation-length="9-10">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="user_nic">NIC</label>
-                                        <input type="text" class="form-control" name="user_nic" id="usernic"  placeholder="Enter NIC Number" data-validation="custom" data-validation-regexp="[0-9]{9}[x|X|v|V]|[0-9]{11}[x|X|v|V]">
+                                        <input type="text" class="form-control" name="user_nic" id="user_nic"  placeholder="Enter NIC Number" data-validation="custom" data-validation-regexp="[0-9]{9}[x|X|v|V]|[0-9]{11}[x|X|v|V]">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="role_id">User Role</label>
-                                        <select name="role_id" id="roleid" class="form-control" data-validation="required">
+                                        <select name="role_id" id="role_id" class="form-control" data-validation="required">
 											<option selected disabled>Admin</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="user_image">User Image</label>
-                                        <input type="file" name="user_image" id="userimage" class="form-control" data-validation="required">
+                                        <input type="file" name="user_image" id="user_image" class="form-control" data-validation="required">
                                     </div>
 									<div class="form-group col-md-6">
 										<div class="row">
 											<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
 											<div class="col-sm-10">
 												<div class="form-check">
-													<input class="form-check-input" type="radio" name="user_gender" id="usergender" value="male" data-validation="required">
+													<input class="form-check-input" type="radio" name="user_gender" id="user_gender" value="male" data-validation="required">
 													<label class="form-check-label" for="user_gender">
 														Male
 													</label>
 												</div>
 												<div class="form-check">
-													<input class="form-check-input" type="radio" name="user_gender" id="usergender" value="female"data-validation="required" >
+													<input class="form-check-input" type="radio" name="user_gender" id="user_gender" value="female"data-validation="required" >
 													<label class="form-check-label" for="user_gender">
 														Female
 													</label>
@@ -113,7 +113,7 @@
 
                                 <div class="modal-footer">
                                     <div class="text-right">
-										<button type="reset" class="btn btn-secondary text-right">Resset</button>
+										<button type="reset" class="btn btn-secondary text-right">Reset</button>
 										<button type="submit" class="btn btn-primary text-right">Submit</button>
                                     </div>
                                 </div>
