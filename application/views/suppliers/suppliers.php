@@ -70,7 +70,6 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="sup_address">Address 1</label>
-
                                     <input type="text" class="form-control" name="sup_address" id="sup_address"  placeholder="Enter Address" data-validation="required">
                                 </div>
 
