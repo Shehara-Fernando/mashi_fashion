@@ -11,8 +11,13 @@ class Inventory extends CI_Controller {
 	}
 
 	public function  add_item(){
-
-
+		$this->form_validation->set_rules('item_code', 'Item Code', 'required');
+		$this->form_validation->set_rules('cat_id', 'Item Category', 'required');
+		$this->form_validation->set_rules('type_id', 'Item Type', 'required');
+		$this->form_validation->set_rules('item_name', 'Item Name', 'required|alpha');
+		$this->form_validation->set_rules('item_price', 'Item Price',  'required');
+		$this->form_validation->set_rules('quantity', 'Quantity',  'required|max_length[20]');
+		$this->form_validation->set_rules('item_image', 'Item Image',  'required');
 
 
 		$items = array(
