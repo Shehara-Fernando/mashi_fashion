@@ -83,12 +83,12 @@
                                     <div class="form-group col-md-6">
                                         <label for="role_id">User Role</label>
                                         <select name="role_id" id="role_id" class="form-control" data-validation="required">
-											<option selected disabled>Admin</option>
+											<option selected >Admin</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="user_image">User Image</label>
-                                        <input type="file" name="user_image" id="user_image" class="form-control" data-validation="required">
+                                        <input type="file" name="user_image" id="user_image" class="form-control" >
                                     </div>
 									<div class="form-group col-md-6">
 										<div class="row">

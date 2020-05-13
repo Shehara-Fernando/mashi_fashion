@@ -55,7 +55,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form id="materialform" action="<?php echo base_url('inventory/Materials/add_materials')?>" method="post">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="mat_code">Material Code</label>
@@ -64,7 +64,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="mcat_id">Material Category </label>
                                         <select id="mcat_id" name="mcat_id" class="form-control" data-validation="required">
-											<option selected disabled>Select one</option>
+											<option selected >Fabrics</option>
                                         </select>
                                     </div>
                                 </div>
@@ -73,21 +73,22 @@
                                         <label for="mtype_id">Material Type</label>
 
                                         <select id="mtype_id" name="mtype_id" class="form-control" data-validation="required">
+											<option selected >Crepe</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="mat_name">Material Name</label>
-                                        <input type="text" class="form-control" name="mat_name" id="mat_name"  placeholder="Enter Material Name"  data-validation="length" data-validation-length="50-200">
+                                        <input type="text" class="form-control" name="mat_name" id="mat_name"  placeholder="Enter Material Name"  data-validation="required" >
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="quantity">Quantity</label>
-                                        <input type="text" class="form-control" name="quantity" id="quantity"  placeholder="Enter Quanity" data-validation="number">
+                                        <input type="text" class="form-control" name="quantity" id="quantity"  placeholder="Enter Quanity" data-validation="number"data-validation-allowing="range[1;100]">
                                     </div>
                                     <div class="form-group col-md-6">
 										<label for="user_image">Material Image</label>
-										<input type="file" name="mat_image" id="mat_image" data-validation="required">
+										<input type="file" name="mat_image" id="mat_image">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

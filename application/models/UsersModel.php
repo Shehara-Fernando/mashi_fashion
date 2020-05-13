@@ -19,6 +19,17 @@ class UsersModel extends CI_Model {
 		}
 	}
 
+	public function create($userdata) {
+		$this->db->insert('user', $userdata);
+		$result = $this->db->affected_rows();
+		if($result == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 
 }
 
