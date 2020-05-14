@@ -19,32 +19,43 @@
                             <thead>
                             <tr>
                                 <th>Item Code</th>
-                                <th>Item Name</th>
-                                <th> Item Type</th>
-                                <th>Category</th>
+                                <th class="text-center">Item Name</th>
+                                <th> Item Category And Type</th>
                                 <th class="text-center">Item Price</th>
                                 <th>Quantity</th>
                                 <th>Units Of Measure</th>
+								<th>Status</th>
                                 <th class="text-center"width="10%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="text-right"></td>
-                                    <td></td>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-sm btn-primary"> <i class="fas fa-pencil-alt"></i> </button></a>
+							<?php foreach ($items as $item) {?>
+								<tr>
+									<td><?php  echo $item->Code; ?></td>
+									<td class="text-center"> <?php echo $item->Name; ?></td>
+									<td><?php echo $item->cat_id." ".$item->type_id; ?></td>
+									<td><?php echo $item->Price; ?></td>
+									<td class="text-right"><?php echo $item->Quantity?></td>
+									<td></td>
+									<td>
+										<?php if($item->Status == 0) { ?>
+											<span class="badge badge-secondary">Inactive</span>
+										<?php } else { ?>
+											<span class="badge badge-success">Active</span>
+										<?php } ?>
+									</td>
+									<td class="text-center">
+										<button type="button" class="btn btn-sm btn-primary"> <i class="fas fa-pencil-alt"></i> </button>
+										<?php  if ($item->Status ==1){?>
 										<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-                                        <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
-                                      </td>
-                                </tr>
-                               </td>
-                            </tbody>
+										<?php }elseif($item->Status ==0){?>
+										<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
+										<?php } ?>
+									</td>
+								</tr>
+							<?php } ?>
+
+							</tbody>
                         </table>
               </div>
 
@@ -67,9 +78,11 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="cat_id">Item Category </label>
-                                        <select id="catid" name="cat_id" class="form-control" data-validation="required">
+                                        <select id="cat_id" name="cat_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
-											<option>Saree</option>
+											<?php foreach ($categorys as $category){?>
+											<option value="<?php echo $category->cat_id; ?>"><?php echo $category->cat_name; ?></option>
+											<?php }?>
                                         </select>
                                     </div>
                                 </div>
@@ -79,7 +92,9 @@
 
                                         <select id="typeid" name="type_id" class="form-control" data-validation="required">
                                             <option selected disabled>Select one</option>
-											<option>Floral print</option>
+											<?php foreach ($types as $type){?>
+											<option value="<?php echo $type->type_id; ?>"><?php echo$type->type_name?></option>
+											<?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">

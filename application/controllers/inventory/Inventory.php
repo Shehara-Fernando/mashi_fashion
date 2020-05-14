@@ -6,12 +6,20 @@ class Inventory extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('ItemsModel');
+		$this->load->model('CategorysModel');
+		$this->load->model('TypesModel');
 	}
 
 	public function index()
 	{
+		$data = array(
+			"items" =>$this->ItemsModel->select(),
+			"categorys" =>$this->CategorysModel->select(),
+			"types" =>$this->TypesModel->select(),
+
+		);
 		$this->load->view('header');
-		$this->load->view('inventory/item');
+		$this->load->view('inventory/item',$data);
 		$this->load->view('footer');
 	}
 
@@ -26,19 +34,18 @@ class Inventory extends CI_Controller {
 
 
 		$items = array(
-		"item_code" => $this->input->post('item_code'),
+		"Code" => $this->input->post('item_code'),
 		"cat_id" => $this->input->post('cat_id'),
 		"type_id" => $this->input->post('type_id'),
-		"item_name" => $this->input->post('item_name'),
-		"item_price" => $this->input->post('item_price'),
-		"quantity" => $this->input->post('quantity') ,
+		"Name" => $this->input->post('item_name'),
+		"Price" => $this->input->post('item_price'),
+		"Quantity" => $this->input->post('quantity') ,
 		//"ii_name" => $this->input->post('item_image')
-
 
 		);
 		$result = $this->ItemsModel->create($items);
 		if ($result == true){
-			redirect('inventory/item');
+			redirect('inventory/Inventory');
 
 		}
 

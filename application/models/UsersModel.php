@@ -30,6 +30,14 @@ class UsersModel extends CI_Model {
 		}
 	}
 
+	public function select()
+	{
+		$this->db->from('user');
+		$this->db->order_by('user_id', 'asd');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 
 }
 

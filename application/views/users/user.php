@@ -17,7 +17,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>User Code</th>
+                            <th>User id</th>
                             <th>Name</th>
                             <th>Gender</th>
                             <th>Role</th>
@@ -25,18 +25,30 @@
                             <th class="text-center" width="10%">Actions</th>
                         </tr>
                         <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-							<td class="text-center">
-								<button type="button" class="btn btn-sm btn-primary"> <i class="fas fa-pencil-alt"></i> </button></a>
-								<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-								<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
-							</td>
-                        </tr>
+						<?php foreach ($users as $user) {?>
+							<tr>
+								<td><?php echo $user->user_id; ?></td>
+								<td><?php echo $user->user_fname." ".$user->user_lname; ?></td>
+								<td><?php if ($user->user_gender == "female"){ echo "Female";}else{ echo "Male";}?></td>
+								<td><?php echo  $user->role_id;  ?></td>
+								<td class="text-center" >
+									<?php if($user->user_status == 0) { ?>
+										<span class="badge badge-secondary">Inactive</span>
+									<?php } else { ?>
+										<span class="badge badge-success">Active</span>
+									<?php } ?>
+								</td>
+								<td class="text-center">
+									<button type="button" class="btn btn-sm btn-primary"> <i class="fas fa-pencil-alt"></i> </button>
+									<?php if($user->user_status == 0) { ?>
+										<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+									<?php } elseif($user->user_status == 1) { ?>
+										<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
+									<?php } ?>
+								</td>
+							</tr>
+						<?php } ?>
+
                         </tbody>
                     </table>
                 </div>
@@ -83,7 +95,10 @@
                                     <div class="form-group col-md-6">
                                         <label for="role_id">User Role</label>
                                         <select name="role_id" id="role_id" class="form-control" data-validation="required">
-											<option selected >Admin</option>
+											<option selected disabled>Select Role</option>
+											<?php foreach ($roles as $role) { ?>
+												<option value="<?php echo $role->role_id; ?>"><?php echo $role->role_name; ?></option>
+											<?php } ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">

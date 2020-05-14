@@ -5,12 +5,17 @@ class Users extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('UsersModel');
+		$this->load->model('RolesModel');
 	}
 
 	public function index()
 	{
+		$data = array(
+			'users' => $this->UsersModel->select(),
+			'roles' => $this->RolesModel->select(),
+		);
 		$this->load->view('header');
-		$this->load->view('users/user');
+		$this->load->view('users/user', $data);
 		$this->load->view('footer');
 	}
 
@@ -36,12 +41,13 @@ class Users extends CI_Controller {
 		   "user_nic" 		=> $this->input->post('user_nic'),
 		   "role_id"       => $this->input->post('role_id'),
 //		   "user_image"    => $this->input->post('user_image') ,
-		   "user_gender"   => $this->input->post('user_gender')
+		   "user_gender"   => $this->input->post('user_gender'),
+			"user_doj"		=> date("Y-m-d"),
 		);
 
 		$result = $this->UsersModel->create($userdata);
 		if($result == true) {
-			redirect('users/user');
+			redirect('users/users');
 		}
 
 
