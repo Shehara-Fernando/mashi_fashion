@@ -34,26 +34,24 @@
 									<option selected disabled>Select One</option>
 								</select>
 							</div>
-							<div class="form-group col-md-2">
-								<label>Product type</label>
-								<select id="type_id" name="type_id" class="form-control">
-									<option selected disabled>Select One</option>
-								</select>
-							</div>
+							<div class="clearfix">&nbsp;</div>
 							<div class="form-group col-md-2">
 								<label>Quantity</label>
 								<input type="text" id="quantity" name="quantity" class="form-control">
 							</div>
+							<div class="clearfix">&nbsp;</div>
 							<div class="form-group col-md-2">
 								<label>Units Of Measure</label>
 								<select id="unit_id" name="unit_id" class="form-control">
-									<option selected disabled>Select Onem</option>
+									<option selected disabled>Select One</option>
 								</select>
 							</div>
+							<div class="clearfix">&nbsp;</div>
 							<div class="form-group col-md-2">
 								<label>Unit Price</label>
 								<input type="text" id="unit_price" name="unit_price" class="form-control">
 							</div>
+							<div class="clearfix">&nbsp;</div>
 							<div class="form-group col-md-2">
 								<label>Total Price</label>
 								<input type="text" id="quantity" name="quantity">

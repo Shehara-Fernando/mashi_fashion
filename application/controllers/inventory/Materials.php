@@ -6,12 +6,19 @@ class Materials extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('MaterialsModel');
+		$this->load->model('MaterialCategoryModel');
+		$this->load->model('MaterialTypeModel');
 	}
 
 	public function index()
 	{
+		$data = array(
+			'materials' => $this->MaterialsModel->select(),
+			"categories" => $this->MaterialCategoryModel->select(),
+			"types" => $this->MaterialTypeModel->select(),
+		);
 		$this->load->view('header');
-		$this->load->view('inventory/material');
+		$this->load->view('inventory/material',$data);
 		$this->load->view('footer');
 	}
 
@@ -35,7 +42,7 @@ class Materials extends CI_Controller {
 		);
 		$result = $this->MaterialsModel->create($materialdata);
 		if ($result == true) {
-			redirect('inventory/material');
+			redirect('inventory/Materials');
 
 
 		}

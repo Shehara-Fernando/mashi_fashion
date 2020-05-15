@@ -39,7 +39,7 @@
 									<?php } ?>
 								</td>
 								<td class="text-center">
-									<button type="button" class="btn btn-sm btn-primary"> <i class="fas fa-pencil-alt"></i> </button>
+									<button type="button" class="btn btn-sm btn-secondary"> <i class="fas fa-pencil-alt"></i> </button>
 									<?php if($user->user_status == 0) { ?>
 										<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
 									<?php } elseif($user->user_status == 1) { ?>

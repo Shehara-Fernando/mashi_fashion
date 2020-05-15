@@ -9,4 +9,12 @@ class CreatePurchases extends CI_Controller {
 		$this->load->view('purchaseorders/createpo');
 		$this->load->view('footer');
 	}
+
+	public function add_purchases(){
+		$purchases = array(
+
+
+		);
+
+	}
 }

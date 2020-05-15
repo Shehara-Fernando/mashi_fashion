@@ -88,19 +88,30 @@
 
                                 </div>
                                 <div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="province">District</label>
+										<select id="dis_id" name="dis_id" class="form-control" data-validation="required">
+											<option selected disabled>Select one</option>
+										</select>
+									</div>
+
                                     <div class="form-group col-md-6">
-                                        <label for="city">City</label>
-                                        <select id="city_id" name="city_id" class="form-control" data-validation="required">
-                                            <option selected disabled>Select one</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="country">Country</label>
-                                        <select id="country_id" name="country_id" class="form-control"data-validation="required">
-                                            <option selected disabled>Select one</option>
-                                        </select>
+										<label for="city">City</label>
+										<select id="city_id" name="city_id" class="form-control" data-validation="required">
+											<option selected disabled>Select one</option>
+										</select>
+
                                     </div>
                                 </div>
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="country">Country</label>
+										<select id="country_id" name="country_id" class="form-control"data-validation="required">
+											<option selected disabled>Select one</option>
+										</select>
+									</div>
+
+								</div>
                                 <div class="modal-footer">
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-primary text-right">Submit</button>
