@@ -22,21 +22,34 @@
                                 <th>Supplier Name</th>
                                 <th>Supplier Email</th>
                                 <th>Supplier contact number</th>
+								<th>Status </th>
                                 <th class="text-center">Action</th>
 
                             </tr>
                             </thead>
 
                             <tbody>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+							<?php foreach ($suppliers as $supplier) {?>
+                            <td><?php echo $supplier->name; ?></td>
+                            <td><?php echo $supplier->email; ?></td>
+                            <td><?php echo $supplier->telephone;  ?></td>
+							<td class="text-center">
+								<?php if($supplier->status == 0) { ?>
+									<span class="badge badge-secondary">Inactive</span>
+								<?php } else { ?>
+									<span class="badge badge-success">Active</span>
+								<?php } ?>
+							</td>
                             <td class="text-center">
-								<button type="button" class="btn btn-sm btn-primary"> <i class="fas fa-pencil-alt"></i> </button></a>
+								<button type="button" class="btn btn-sm btn-secondary"> <i class="fas fa-pencil-alt"></i> </button></a>
+								<?php if($supplier->status == 0) { ?>
 								<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+								<?php } elseif($supplier->status == 1) { ?>
 								<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
+								<?php } ?>
 							</td>
                             </tbody>
+							<?php } ?>
                         </table>
                     </div>
                    <!-- Modal -->
@@ -50,7 +63,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form is="sup_form" action="<?php echo base_url('suppliers/Suppliers/add_supplier')?>" method="post">
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="sup_name">Supplier Name</label>
@@ -66,32 +79,38 @@
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
                                         <label for="sup_tel">Telephone Number</label>
-                                        <input type="tel" class="form-control" name="sup_tel" id="sup_tel"  placeholder="Enter Telephone number"data-validation="length" data-validation-length="9-10">
+                                        <input type="tel" class="form-control" name="sup_telephone" id="sup_telephone"  placeholder="Enter Telephone number"data-validation="length" data-validation-length="9-10">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="sup_address">Address 1</label>
-                                    <input type="text" class="form-control" name="sup_address" id="sup_address"  placeholder="Enter Address" data-validation="required">
+                                    <input type="text" class="form-control" name="sup_address1" id="sup_address1"  placeholder="Enter Address" data-validation="required">
                                 </div>
 
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="sup_tel">Address 2</label>
-                                        <input type="text" class="form-control" name="sup_address" id="sup_address"  placeholder="Enter Address" data-validation="required">
+                                        <input type="text" class="form-control" name="sup_address2" id="sup_address2"  placeholder="Enter Address" data-validation="required">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="province">Province</label>
-                                        <select id="pro_id" name="pro_id" class="form-control" data-validation="required">
+                                        <select id="province_id" name="province_id" class="form-control" data-validation="required">
                                             <option selected disabled>Select one</option>
+											<?php foreach ($provinces as $province) {?>
+											<option value="<?php echo $province->id; ?>"><?php echo $province->name_en?></option>
+											<?php } ?>
                                         </select>
                                     </div>
 
                                 </div>
                                 <div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="province">District</label>
-										<select id="dis_id" name="dis_id" class="form-control" data-validation="required">
+										<label for="district">District</label>
+										<select id="district_id" name="district_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
+											<?php foreach ($districts as $district) {?>
+											<option value="<?php echo $district->id; ?>"><?php echo $district->name_en?></option>
+										    <?php } ?>
 										</select>
 									</div>
 
@@ -99,23 +118,15 @@
 										<label for="city">City</label>
 										<select id="city_id" name="city_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
+											<option>Wennappuwa</option>
 										</select>
 
                                     </div>
                                 </div>
-								<div class="form-row">
-									<div class="form-group col-md-6">
-										<label for="country">Country</label>
-										<select id="country_id" name="country_id" class="form-control"data-validation="required">
-											<option selected disabled>Select one</option>
-										</select>
-									</div>
-
-								</div>
-                                <div class="modal-footer">
+								<div class="modal-footer">
                                     <div class="text-right">
+										<button type="reset" class="btn btn-danger text-right">Reset</button>
                                         <button type="submit" class="btn btn-primary text-right">Submit</button>
-                                        <button type="reset" class="btn btn-danger text-right">Reset</button>
                                     </div>
                                 </div>
                             </form>

@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Materials extends CI_Controller {
+	// to load the models
 	public  function __construct()
 	{
 		parent::__construct();
@@ -10,6 +11,7 @@ class Materials extends CI_Controller {
 		$this->load->model('MaterialTypeModel');
 	}
 
+	// array to call the function
 	public function index()
 	{
 		$data = array(
@@ -22,6 +24,7 @@ class Materials extends CI_Controller {
 		$this->load->view('footer');
 	}
 
+    // array to insert form data into the db
 	public function add_materials()
 	{
 		//$this->form_validation->set_rules('mat_code', 'Material Code', 'required');
@@ -40,6 +43,7 @@ class Materials extends CI_Controller {
 			"quantity" => $this->input->post('quantity')
 
 		);
+		// to redirect the page when the result is true
 		$result = $this->MaterialsModel->create($materialdata);
 		if ($result == true) {
 			redirect('inventory/Materials');

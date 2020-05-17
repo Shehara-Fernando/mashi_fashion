@@ -19,7 +19,7 @@
                 <div class="clearfix">&nbsp;</div>
                 <div class="row">
                 <div class="mt-4 col-md-6 ">
-                    <div class="card" style="width: 18rem; background:#7abaff;">
+                    <div class="card" style="width: 18rem; background:red;">
                         <div class="card-body">
                             <h5 class="card-title">Lehengas</h5>
                             <p class="card-text">No Of Lehengas</p>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="row">
                 <div class="mt-4 col-md-4" >
-                <div class="card" style="width: 18rem; background: #ba8b00">
+                <div class="card" style="width: 18rem; background: coral">
                     <div class="card-body">
                         <h5 class="card-title">Frocks</h5>
                         <p class="card-text">No Of Frocks</p>

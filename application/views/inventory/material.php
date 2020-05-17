@@ -21,20 +21,20 @@
 
                             <tr>
                                 <th>Material Code</th>
-                                <th class="text-center">Material Name</th>
+                                <th>Material Name</th>
                                 <th> Material Category and Type</th>
-                                <th>Quantity</th>
+                                <th class="text-right">Quantity</th>
 								<th>Status</th>
-                                <th class="text-center"width="10%">Action</th>
+                                <th class="text-right"width="10%">Action</th>
                             </tr>
                             </thead>
                             <tbody>
 							<?php foreach ($materials as $material) { ?>
                              <tr>
                                  <td><?php echo $material->code; ?></td>
-                                 <td class="text-center"><?php echo $material->name; ?></td>
+                                 <td ><?php echo $material->name; ?></td>
                                  <td><?php echo $material->mcat_id." ".$material->mtype_id; ?></td>
-                                 <td><?php echo $material->quantity?></td>
+                                 <td class="text-right"><?php echo $material->quantity?></td>
                                  <td>
 									 <?php if($material->status == 0) { ?>
 										 <span class="badge badge-secondary">Inactive</span>
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="mtype_id">Material Type</label>
+                                       <label for="mtype_id">Material Type</label>
                                         <select id="mtype_id" name="mtype_id" class="form-control" data-validation="required">
 											<option selected disabled >Select One</option>
 											<?php foreach ($types as $type) {?>

@@ -2,8 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inventory extends CI_Controller {
-	public function __construct()
-	{
+	public function __construct() {
+		// to load the models inorder to get the data
+
 		parent::__construct();
 		$this->load->model('ItemsModel');
 		$this->load->model('CategorysModel');
@@ -12,12 +13,15 @@ class Inventory extends CI_Controller {
 
 	public function index()
 	{
+		//array to call the function which is used to get the data from db
 		$data = array(
-			"items" =>$this->ItemsModel->select(),
-			"categorys" =>$this->CategorysModel->select(),
-			"types" =>$this->TypesModel->select(),
+			"items"         =>$this->ItemsModel->select(),
+			"categorys"     =>$this->CategorysModel->select(),
+			"types"         =>$this->TypesModel->select(),
+			"item_categories"=>$this->ItemsModel->get_product_by_category(),
 
 		);
+		// load the pages in the view
 		$this->load->view('header');
 		$this->load->view('inventory/item',$data);
 		$this->load->view('footer');
@@ -33,16 +37,34 @@ class Inventory extends CI_Controller {
 		//$this->form_validation->set_rules('item_image', 'Item Image',  'required');
 
 
+		// define upload image configurations
+		$config['upload_path'] = 'assets/images/item_images/';
+		$config['allowed_types'] = 'jpg|png';
+		$config['max_size'] = 2000;
+		$config['max_width'] = 1500;
+		$config['max_height'] = 1500;
+
+		// load upload library
+		$this->load->library('upload', $config);
+
+		// get upload image attributes
+		$this->upload->do_upload('item_image');
+		$image_data = $this->upload->data();
+
+
+		// array to get the data in the form to insert the db
+
 		$items = array(
-		"Code" => $this->input->post('item_code'),
-		"cat_id" => $this->input->post('cat_id'),
+		"code"    => $this->input->post('item_code'),
+    "category_id" => $this->input->post('category_id'),
 		"type_id" => $this->input->post('type_id'),
-		"Name" => $this->input->post('item_name'),
-		"Price" => $this->input->post('item_price'),
-		"Quantity" => $this->input->post('quantity') ,
-		//"ii_name" => $this->input->post('item_image')
+		"name"    => $this->input->post('item_name'),
+		"price"   => $this->input->post('item_price'),
+		"quantity"=> $this->input->post('quantity') ,
+	      "image" => $this->input->post('item_image')
 
 		);
+		// to get the result
 		$result = $this->ItemsModel->create($items);
 		if ($result == true){
 			redirect('inventory/Inventory');
