@@ -17,9 +17,10 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>User id</th>
                             <th>Name</th>
+							<th>Email</th>
                             <th>Gender</th>
+							<th>Telephone </th>
                             <th>Role</th>
                             <th>Status</th>
                             <th class="text-center" width="10%">Actions</th>
@@ -27,12 +28,13 @@
                         <tbody>
 						<?php foreach ($users as $user) {?>
 							<tr>
-								<td><?php echo $user->user_id; ?></td>
-								<td><?php echo $user->user_fname." ".$user->user_lname; ?></td>
-								<td><?php if ($user->user_gender == "female"){ echo "Female";}else{ echo "Male";}?></td>
-								<td><?php echo  $user->role_id;  ?></td>
+								<td><?php echo $user->first_name." ".$user->last_name; ?></td>
+								<td><?php echo $user->email; ?></td>
+								<td><?php if ($user->gender == "female"){ echo "Female";}else{ echo "Male";}?></td>
+								<td><?php echo  $user->telephone_number;  ?></td>
+								<td><?php echo  $user->roles;  ?></td>
 								<td class="text-center" >
-									<?php if($user->user_status == 0) { ?>
+									<?php if($user->status == 0) { ?>
 										<span class="badge badge-secondary">Inactive</span>
 									<?php } else { ?>
 										<span class="badge badge-success">Active</span>
@@ -40,9 +42,9 @@
 								</td>
 								<td class="text-center">
 									<button type="button" class="btn btn-sm btn-secondary"> <i class="fas fa-pencil-alt"></i> </button>
-									<?php if($user->user_status == 0) { ?>
+									<?php if($user->status == 0) { ?>
 										<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-									<?php } elseif($user->user_status == 1) { ?>
+									<?php } elseif($user->status == 1) { ?>
 										<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
 									<?php } ?>
 								</td>
@@ -64,8 +66,9 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form id="userform"action="<?php echo base_url('users/Users/add_users');?>" method="post">
+                        <form id="userform"action="<?php echo base_url('users/Users/add_users');?>" method="post" enctype="multipart/form-data">
                             <div class="modal-body">
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="user_fname">First Name</label>
@@ -97,7 +100,7 @@
                                         <select name="role_id" id="role_id" class="form-control" data-validation="required">
 											<option selected disabled>Select Role</option>
 											<?php foreach ($roles as $role) { ?>
-												<option value="<?php echo $role->role_id; ?>"><?php echo $role->role_name; ?></option>
+												<option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
 											<?php } ?>
                                         </select>
                                     </div>
@@ -131,7 +134,7 @@
 										<button type="reset" class="btn btn-secondary text-right">Reset</button>
 										<button type="submit" class="btn btn-primary text-right">Submit</button>
                                     </div>
-                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

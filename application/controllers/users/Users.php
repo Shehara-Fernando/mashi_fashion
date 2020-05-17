@@ -3,49 +3,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller {
 	public function __construct() {
+		// loading models inorder to ge the data from the model
 		parent::__construct();
 		$this->load->model('UsersModel');
 		$this->load->model('RolesModel');
 	}
 
-	public function index()
-	{
+	public function index()	{
+		// call the function in the model inorder to get the data
+
 		$data = array(
 			'users' => $this->UsersModel->select(),
 			'roles' => $this->RolesModel->select(),
 		);
+		// loading the view pages
 		$this->load->view('header');
 		$this->load->view('users/user', $data);
 		$this->load->view('footer');
 	}
 
-	public function add_users(){
+	public function add_users() {
 
-		//$this->form_validation->set_rules('user_fname', 'First Name', 'required|trim');
-		//$this->form_validation->set_rules('user_lname', 'Last Name', 'required|trim');
-		//$this->form_validation->set_rules('user_email', 'Email', 'required|valid_email');
-		//$this->form_validation->set_rules('user_tel', 'Telephone Number', 'required|max_length[10]');
-		//$this->form_validation->set_rules('user_nic', 'NIC', 'required|max_length[12]');
-		//$this->form_validation->set_rules('role_id', 'User Role', 'required');
-		//$this->form_validation->set_rules('user_image', 'User Image', 'required');
-		//$this->form_validation->set_rules('user_gender', 'User Gender', 'required');
+		// define upload image configurations
+		$config['upload_path'] = 'assets/images/user_images/';
+		$config['allowed_types'] = 'jpg|png';
+		$config['max_size'] = 2000;
+		$config['max_width'] = 1500;
+		$config['max_height'] = 1500;
 
+		// load upload library
+		$this->load->library('upload', $config);
 
+		// get upload image attributes
+		$this->upload->do_upload('user_image');
+		$image_data = $this->upload->data();
 
+		// assigning the names of the form to the db tables
 
-		$userdata = array(
-           "user_fname" 	=> $this->input->post('user_fname'),
-		   "user_lname" 	=> $this->input->post('user_lname'),
-		   "user_email" 	=> $this->input->post('user_email'),
-		   "user_tel" 		=> $this->input->post('user_tel'),
-		   "user_nic" 		=> $this->input->post('user_nic'),
-		   "role_id"       => $this->input->post('role_id'),
-//		   "user_image"    => $this->input->post('user_image') ,
-		   "user_gender"   => $this->input->post('user_gender'),
-			"user_doj"		=> date("Y-m-d"),
+		$user_data = array(
+           "first_name" 	=> $this->input->post('user_fname'),
+		   "last_name" 	    => $this->input->post('user_lname'),
+		   "email" 	        => $this->input->post('user_email'),
+		  "telephone_number"=> $this->input->post('user_tel'),
+		  "nic" 		    => $this->input->post('user_nic'),
+		  "role_id"         => $this->input->post('role_id'),
+		  "image"           => $image_data['file_name'],
+		  "gender"          => $this->input->post('user_gender'),
+		"create_date"	    => date("Y-m-d"),
 		);
+        // get the data  from the model
+		$result = $this->UsersModel->create($user_data);
 
-		$result = $this->UsersModel->create($userdata);
+        //Redirect to the user page
 		if($result == true) {
 			redirect('users/users');
 		}

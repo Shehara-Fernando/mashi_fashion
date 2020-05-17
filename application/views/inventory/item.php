@@ -19,9 +19,9 @@
                             <thead>
                             <tr>
                                 <th>Item Code</th>
-                                <th class="text-center">Item Name</th>
+                                <th >Item Name</th>
                                 <th> Item Category And Type</th>
-                                <th class="text-center">Item Price</th>
+                                <th>Item Price</th>
                                 <th>Quantity</th>
                                 <th>Units Of Measure</th>
 								<th>Status</th>
@@ -31,14 +31,14 @@
                             <tbody>
 							<?php foreach ($items as $item) {?>
 								<tr>
-									<td><?php  echo $item->Code; ?></td>
-									<td class="text-center"> <?php echo $item->Name; ?></td>
-									<td><?php echo $item->cat_id." ".$item->type_id; ?></td>
-									<td><?php echo $item->Price; ?></td>
-									<td class="text-right"><?php echo $item->Quantity?></td>
+									<td><?php  echo $item->code; ?></td>
+									<td> <?php echo $item->name; ?></td>
+									<td><?php echo $item->id." ".$item->id; ?></td>
+									<td class="text-right"><?php echo $item->price; ?></td>
+									<td class="text-right"><?php echo $item->quantity?></td>
 									<td></td>
 									<td>
-										<?php if($item->Status == 0) { ?>
+										<?php if($item->status == 0) { ?>
 											<span class="badge badge-secondary">Inactive</span>
 										<?php } else { ?>
 											<span class="badge badge-success">Active</span>
@@ -46,9 +46,9 @@
 									</td>
 									<td class="text-center">
 										<button type="button" class="btn btn-sm btn-secondary"> <i class="fas fa-pencil-alt"></i> </button>
-										<?php  if ($item->Status ==1){?>
+										<?php  if ($item->status ==1){?>
 										<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-										<?php }elseif($item->Status ==0){?>
+										<?php }elseif($item->status ==0){?>
 										<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
 										<?php } ?>
 									</td>
@@ -77,11 +77,11 @@
                                         <input type="text" class="form-control" name="item_code" id="itemcode"  placeholder="Enter Item Code " data-validation="required">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="cat_id">Item Category </label>
-                                        <select id="cat_id" name="cat_id" class="form-control" data-validation="required">
+                                        <label for="category_id">Item Category </label>
+                                        <select id="category_id" name="category_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
 											<?php foreach ($categorys as $category){?>
-											<option value="<?php echo $category->cat_id; ?>"><?php echo $category->cat_name; ?></option>
+											<option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
 											<?php }?>
                                         </select>
                                     </div>
@@ -93,7 +93,7 @@
                                         <select id="typeid" name="type_id" class="form-control" data-validation="required">
                                             <option selected disabled>Select one</option>
 											<?php foreach ($types as $type){?>
-											<option value="<?php echo $type->type_id; ?>"><?php echo$type->type_name?></option>
+											<option value="<?php echo $type->id; ?>"><?php echo$type->name?></option>
 											<?php } ?>
                                         </select>
                                     </div>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="item_image">Item Image</label>
-                                    <input type="file" name="item_image" id="itemimage"  >
+                                    <input type="file" name="item_image" id="item_image"  >
                                 </div>
                                 <div class="modal-footer">
                                     <div class="text-right">
