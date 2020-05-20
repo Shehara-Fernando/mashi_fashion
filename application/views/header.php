@@ -84,8 +84,10 @@
 
    <div id="layoutSidenav">
 	<div id="layoutSidenav_nav">
-		<nav class="sb-sidenav accordion sb-sidenav-light" style="background: #ba8b00" id="sidenavAccordion">
-			<div class="sb-sidenav-menu">
+
+
+		<nav class="sb-sidenav accordion sb-sidenav-light" style="background: #0062cc" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
 				<div class="nav">
 					<a class="nav-link" href="<?php echo  base_url('dashboard');?>"
 					>

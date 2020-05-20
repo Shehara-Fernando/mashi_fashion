@@ -29,6 +29,7 @@ class ItemsModel extends CI_Model {
 
 	}
 
+<<<<<<< HEAD
 	// to get the categories data from the database
 
 	public function get_product_by_category(){
@@ -44,6 +45,8 @@ class ItemsModel extends CI_Model {
 
 	}
 
+=======
+>>>>>>> origin/development
 
 
 }
