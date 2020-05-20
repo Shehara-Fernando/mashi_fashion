@@ -28,6 +28,7 @@ class Inventory extends CI_Controller {
 	}
 
 	public function  add_item(){
+
 		//$this->form_validation->set_rules('item_code', 'Item Code', 'required');
 		//$this->form_validation->set_rules('cat_id', 'Item Category', 'required');
 		//$this->form_validation->set_rules('type_id', 'Item Type', 'required');
@@ -37,7 +38,7 @@ class Inventory extends CI_Controller {
 		//$this->form_validation->set_rules('item_image', 'Item Image',  'required');
 
 
-<<<<<<< HEAD
+
 		// define upload image configurations
 		$config['upload_path'] = 'assets/images/item_images/';
 		$config['allowed_types'] = 'jpg|png';
@@ -53,8 +54,7 @@ class Inventory extends CI_Controller {
 		$image_data = $this->upload->data();
 
 
-=======
->>>>>>> origin/development
+
 		// array to get the data in the form to insert the db
 
 		$items = array(
@@ -64,13 +64,13 @@ class Inventory extends CI_Controller {
 		"name"    => $this->input->post('item_name'),
 		"price"   => $this->input->post('item_price'),
 		"quantity"=> $this->input->post('quantity') ,
-<<<<<<< HEAD
-	      "image" => $this->input->post('item_image')
-=======
-	//"ii_name"   => $this->input->post('item_image')
->>>>>>> origin/development
+		"image"   => $this->input->post('item_image') ,
+
+
 
 		);
+
+
 		// to get the result
 		$result = $this->ItemsModel->create($items);
 		if ($result == true){

@@ -50,11 +50,7 @@ class UsersModel extends CI_Model {
 	}
  // to ge the role names related to the role id from roles table
 	public function select(){
-<<<<<<< HEAD
-
-=======
-		// to get the roles name from roles table
->>>>>>> origin/development
+    // to get the roles name from roles table
 
 		$this->db->select('users.*, roles.name as roles');
 		$this->db->from('users');

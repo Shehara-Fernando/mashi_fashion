@@ -18,11 +18,9 @@
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                             <tr>
-<<<<<<< HEAD
+
                                 <th >Item Code</th>
-=======
                                 <th>Item Code</th>
->>>>>>> origin/development
                                 <th >Item Name</th>
                                 <th> Item Category And Type</th>
                                 <th>Item Price</th>
@@ -37,11 +35,8 @@
 								<tr>
 									<td><?php  echo $item->code; ?></td>
 									<td> <?php echo $item->name; ?></td>
-<<<<<<< HEAD
 									<td><?php echo $item->category_id." ".$item->type_id; ?></td>
-=======
 									<td><?php echo $item->id." ".$item->id; ?></td>
->>>>>>> origin/development
 									<td class="text-right"><?php echo $item->price; ?></td>
 									<td class="text-right"><?php echo $item->quantity?></td>
 									<td></td>
@@ -54,16 +49,11 @@
 									</td>
 									<td class="text-center">
 										<button type="button" class="btn btn-sm btn-secondary"> <i class="fas fa-pencil-alt"></i> </button>
-<<<<<<< HEAD
+
 										<?php  if ($item->status ==0){?>
 										<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
 										<?php }elseif($item->status ==1){?>
-=======
-										<?php  if ($item->status ==1){?>
-										<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-										<?php }elseif($item->status ==0){?>
->>>>>>> origin/development
-										<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
+									    <button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
 										<?php } ?>
 									</td>
 								</tr>
