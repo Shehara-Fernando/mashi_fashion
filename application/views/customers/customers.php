@@ -23,23 +23,36 @@
                                 <th>Gender</th>
                                 <th>Address</th>
                                 <th>Email</th>
+								<th>Status</th>
                                 <th class="text-center" width="10%">Actions</th>
                             </tr>
                             </thead>
                             <tbody>
+							<?php foreach ($customers as $customer) {?>
                             <tr>
+                                <td><?php echo $customer->first_name." ".$customer->last_name ; ?></td>
+                                <td><?php echo $customer->nic ; ?></td>
+                                <td><?php echo $customer->gender ; ?></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo $customer->email ; ?></td>
+								<td class="text-center" >
+									<?php if($customer->status == 0) { ?>
+										<span class="badge badge-secondary">Inactive</span>
+									<?php } else { ?>
+										<span class="badge badge-success">Active</span>
+									<?php } ?>
+								</td>
                                 <td class="text-center">
 									<button type="button" class="btn btn-sm btn-primary"> <i class="fas fa-pencil-alt"></i> </button></a>
+									<?php if($customer->status == 0) { ?>
 									<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+									<?php } elseif($customer->status == 1) { ?>
 									<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
+									<?php } ?>
 								</td>
                                 </td>
                             </tr>
+							<?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -54,7 +67,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form id="addcustomer" action="<?php echo base_url('customers/Customer/add_customer')?>" method="post" >
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="cus_name">First Name</label>
@@ -71,25 +84,31 @@
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="cus_address">Address 1</label>
-										<input type="text" class="form-control" name="cus_address" id="cus_address"  placeholder="Enter The Address">
+										<input type="text" class="form-control" name="cus_address1" id="cus_address1"  placeholder="Enter The Address">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="cus_address">Address 2</label>
-										<input type="text" class="form-control" name="cus_address" id="cus_address"  placeholder="Enter Address">
+										<input type="text" class="form-control" name="cus_address2" id="cus_address2"  placeholder="Enter Address">
 									</div>
 								</div>
 
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="province">Province</label>
-										<select id="pro_id" name="pro_id" class="form-control">
-											<option selected disabled>Select one</option>
+										<select id="province_id" name="province_id" class="form-control">
+											   <option selected disabled>Select one</option>
+											<?php foreach ($provinces as $province) {?>
+												<option value="<?php echo $province->id; ?>"><?php echo $province->name_en?></option>
+											<?php } ?>
 										</select>
 									</div>
 									<div class="form-group col-md-6">
 										<label for="district">District</label>
-										<select id="dis_id" name="dis_id" class="form-control">
-											<option selected disabled>Select one</option>
+										<select id="district_id" name="district_id" class="form-control">
+											   <option selected disabled>Select one</option>
+											<?php foreach ($districts as $district) {?>
+												<option value="<?php echo $district->id; ?>"><?php echo $district->name_en?></option>
+											<?php } ?>
 										</select>
 									</div>
 								</div>
@@ -99,43 +118,38 @@
 										<label for="city">City</label>
 										<select id="city_id" name="city_id" class="form-control">
 											<option selected disabled>Select one</option>
+											<option>Wennappuwa</option>
 										</select>
 									</div>
 									<div class="form-group col-md-6">
-										<label for="country">Country</label>
-										<select id="country_id" name="country_id" class="form-control">
-											<option selected disabled>Select one</option>
-										</select>
+										<label for="cus_address">Customer Telephone</label>
+										<input type="tel" class="form-control" name="cus_tel" id="cus_tel"  placeholder="Enter Telephone Number">
 									</div>
 								</div>
                                 <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="cus_address">Customer Telephone</label>
-                                    <input type="tel" class="form-control" name="cus_tel" id="cus_tel"  placeholder="Enter Telephone Number">
-                                </div>
-                                <div class="form-group col-md-6">
                                     <label for="cus_email">Customer Email</label>
                                     <input type="email" class="form-control" name="cus_email" id="cus_email"  placeholder="Enter Email">
                                 </div>
-                                </div>
-
-                                <div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="cus_nic">NIC </label>
 										<input type="text" class="form-control" name="cus_nic" id="cus_nic"  placeholder="Enter Customer NIC  ">
 									</div>
+                                </div>
+
+                                <div class="form-row">
 								<div class="form-group col-md-6">
                                 <div class="row">
                                     <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="cus_gender" id="cus_gender" value="option1" checked>
+                                            <input class="form-check-input" type="radio" name="cus_gender" id="cus_gender" value="Male" checked>
                                             <label class="form-check-label" for="cus_gender">
                                                 Male
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="cus_gender" id="cus_gender" value="option2">
+                                            <input class="form-check-input" type="radio" name="cus_gender" id="cus_gender" value="Female">
                                             <label class="form-check-label" for="cus_gender">
                                                 Female
                                             </label>

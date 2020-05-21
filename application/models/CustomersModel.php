@@ -1,12 +1,11 @@
 <?php
 
 
-class SuppliersModel extends CI_Model {
+class CustomersModel extends CI_Model {
+	// the function to insert data into the db
+	public  function create($customers){
 
-// the function to insert data into the db
-	public  function create($suppliersdata){
-
-		$this->db->insert('suppliers',$suppliersdata);
+		$this->db->insert('customer',$customers);
 		$result = $this->db->affected_rows();
 		if($result == 1) {
 			return true;
@@ -22,10 +21,12 @@ class SuppliersModel extends CI_Model {
 	public function select() {
 
 
-		$this->db->from('suppliers');
-		$this->db->order_by('name', 'asd');
+		$this->db->from('customer');
+		$this->db->order_by('id', 'asd');
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+
 
 }

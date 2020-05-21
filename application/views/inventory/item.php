@@ -20,8 +20,7 @@
                             <tr>
 
                                 <th >Item Code</th>
-                                <th>Item Code</th>
-                                <th >Item Name</th>
+                                 <th >Item Name</th>
                                 <th> Item Category And Type</th>
                                 <th>Item Price</th>
                                 <th>Quantity</th>
@@ -36,7 +35,6 @@
 									<td><?php  echo $item->code; ?></td>
 									<td> <?php echo $item->name; ?></td>
 									<td><?php echo $item->category_id." ".$item->type_id; ?></td>
-									<td><?php echo $item->id." ".$item->id; ?></td>
 									<td class="text-right"><?php echo $item->price; ?></td>
 									<td class="text-right"><?php echo $item->quantity?></td>
 									<td></td>

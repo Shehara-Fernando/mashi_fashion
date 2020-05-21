@@ -14,9 +14,10 @@ class Suppliers extends CI_Controller {
 	}
 
 
-   // to load the view pages
+
 	public function index()	{
 		// to call the function in the model
+
 		$data = array(
 		  "suppliers" => $this->SuppliersModel->select(),
 		   "districts"=> $this->DistrictModel->select(),
