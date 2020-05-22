@@ -128,7 +128,7 @@
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchases" aria-expanded="false" aria-controls="collapsePurchases"
 					>
 						<div class="sb-nav-link-icon">
-							<i class="fas fa-cart-plus "></i>
+							<i class="fas  fa-truck"></i>
 						</div>
 						Purchases
 						<div class="sb-sidenav-collapse-arrow">
