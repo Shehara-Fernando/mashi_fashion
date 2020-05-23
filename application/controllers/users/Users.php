@@ -10,8 +10,8 @@ class Users extends CI_Controller {
 	}
 
 	public function index()	{
-		// call the function in the model inorder to get the data
 
+		// call the function in the model inorder to get the data
 		$data = array(
 			'users' => $this->UsersModel->select(),
 			'roles' => $this->RolesModel->select(),
@@ -39,22 +39,21 @@ class Users extends CI_Controller {
 		$image_data = $this->upload->data();
 
 		// assigning the names of the form to the db tables
-
 		$user_data = array(
-           "first_name" 	=> $this->input->post('user_fname'),
-		   "last_name" 	    => $this->input->post('user_lname'),
-		   "email" 	        => $this->input->post('user_email'),
-		  "telephone_number"=> $this->input->post('user_tel'),
-		  "nic" 		    => $this->input->post('user_nic'),
-		  "role_id"         => $this->input->post('role_id'),
-		  "image"           => $image_data['file_name'],
-		  "gender"          => $this->input->post('user_gender'),
-		"create_date"	    => date("Y-m-d"),
+			"first_name" 	=> $this->input->post('first_name'),
+			"last_name" 	    => $this->input->post('last_name'),
+			"email" 	        => $this->input->post('email'),
+			"telephone_number"=> $this->input->post('telephone'),
+			"nic" 		    => $this->input->post('nic'),
+			"role_id"         => $this->input->post('role_id'),
+			"image"           => $image_data['file_name'],
+			"gender"          => $this->input->post('gender'),
+			"create_date"	    => date("Y-m-d"),
 		);
-        // get the data  from the model
+		// get the data  from the model
 		$result = $this->UsersModel->create($user_data);
 
-        //Redirect to the user page
+		//Redirect to the user page
 		if($result == true) {
 			redirect('users/users');
 		}

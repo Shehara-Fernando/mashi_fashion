@@ -35,9 +35,9 @@ class ItemsModel extends CI_Model {
 	public function get_product_by_category(){
 
 
-		$this->db->select('products.*, categorys.name as categorys');
+		$this->db->select('products.*, categories.name as categories');
 		$this->db->from('products');
-		$this->db->join('categorys', 'categorys.id = products.category_id');
+		$this->db->join('categories', 'categories.id = products.category_id');
 		$this->db->order_by('products.name','asd');
 		$query= $this->db->get();
 		return $query->result();

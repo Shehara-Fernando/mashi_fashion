@@ -10,7 +10,7 @@ class Customer extends CI_Controller {
 		$this->load->model('CustomersModel');
 		$this->load->model('DistrictModel');
 		$this->load->model('ProvinceModel');
-
+		$this->load->model('CityModel');
 
 	}
 
@@ -19,10 +19,10 @@ class Customer extends CI_Controller {
 	public function index() {
 
 		$data = array(
-
 			"customers"=> $this->CustomersModel->select(),
 			"districts"=> $this->DistrictModel->select(),
 			"provinces"=> $this->ProvinceModel->select(),
+			"cities"  => $this->CityModel->select(),
 
 		);
 
@@ -36,21 +36,19 @@ class Customer extends CI_Controller {
 	public function add_customer(){
 
 		$customers = array(
-			"first_name" => $this->input->post('cus_fname'),
-			"last_name"  => $this->input->post('cus_lname'),
-			// "address1"=> $this->input->post('cus_address1'),
-			//"address2" => $this->input->post('cus_address2'),
-		   "provinces_id"=> $this->input->post('province_id'),
-	       "districts_id"=> $this->input->post('district_id'),
-	        "city_id"    => $this->input->post('city_id'),
-	  "telephone_number" => $this->input->post('cus_tel'),
-			"email"      => $this->input->post('cus_email'),
-			"nic"        => $this->input->post('cus_nic'),
-			"gender"     => $this->input->post('cus_gender'),
-
-
-
+			"first_name" => $this->input->post('first_name'),
+			"last_name"  => $this->input->post('last_name'),
+			"email"      => $this->input->post('email'),
+			"nic"        => $this->input->post('nic'),
+			"telephone_number" => $this->input->post('telephone'),
+			"address"=> $this->input->post('address'),
+			"address_two" => $this->input->post('address_two'),
+			"provinces_id"=> $this->input->post('province_id'),
+			"districts_id"=> $this->input->post('district_id'),
+			"city_id"    => $this->input->post('city_id'),
+			"gender"     => $this->input->post('gender'),
 		);
+
 		// to get the result
 		$result = $this->CustomersModel->create($customers);
 		if ($result == true){

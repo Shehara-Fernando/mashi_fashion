@@ -21,7 +21,7 @@ class Login extends CI_Controller {
 			'email'   => $this->input->post('user_email'),
 			'password' => sha1($this->input->post('user_password'))
 		);
-		//getting the result form the model
+		//getting the result fromm the model
 
 		$result = $this->UsersModel->login($login_data);
         // if the success keyword is true create a session by creating an array to get data and redirect dashboard

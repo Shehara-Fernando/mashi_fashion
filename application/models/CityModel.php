@@ -7,7 +7,7 @@ class CityModel extends CI_Model {
 	public function select()
 	{
 		$this->db->from('cities');
-		$this->db->order_by('id', 'asd');
+		$this->db->order_by('name_en', 'asd');
 		$query = $this->db->get();
 		return $query->result();
 	}

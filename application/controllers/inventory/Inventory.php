@@ -7,7 +7,7 @@ class Inventory extends CI_Controller {
 
 		parent::__construct();
 		$this->load->model('ItemsModel');
-		$this->load->model('CategorysModel');
+		$this->load->model('CategoriesModel');
 		$this->load->model('TypesModel');
 	}
 
@@ -16,7 +16,7 @@ class Inventory extends CI_Controller {
 		//array to call the function which is used to get the data from db
 		$data = array(
 			"items"         =>$this->ItemsModel->select(),
-			"categorys"     =>$this->CategorysModel->select(),
+			"categorys"     =>$this->CategoriesModel->select(),
 			"types"         =>$this->TypesModel->select(),
 			"item_categories"=>$this->ItemsModel->get_product_by_category(),
 
@@ -27,7 +27,7 @@ class Inventory extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	public function  add_item(){
+	public function add_item(){
 
 		//$this->form_validation->set_rules('item_code', 'Item Code', 'required');
 		//$this->form_validation->set_rules('cat_id', 'Item Category', 'required');
@@ -53,23 +53,16 @@ class Inventory extends CI_Controller {
 		$this->upload->do_upload('item_image');
 		$image_data = $this->upload->data();
 
-
-
 		// array to get the data in the form to insert the db
-
 		$items = array(
-		"code"    => $this->input->post('item_code'),
-    "category_id" => $this->input->post('category_id'),
-		"type_id" => $this->input->post('type_id'),
-		"name"    => $this->input->post('item_name'),
-		"price"   => $this->input->post('item_price'),
-		"quantity"=> $this->input->post('quantity') ,
-		"image"   => $this->input->post('item_image') ,
-
-
-
+			"code"    => $this->input->post('code'),
+			"category_id" => $this->input->post('category_id'),
+			"type_id" => $this->input->post('type_id'),
+			"name"    => $this->input->post('name'),
+			"price"   => $this->input->post('price'),
+			"quantity"=> $this->input->post('quantity') ,
+			"image"   => $image_data['file_name'],
 		);
-
 
 		// to get the result
 		$result = $this->ItemsModel->create($items);
@@ -77,11 +70,6 @@ class Inventory extends CI_Controller {
 			redirect('inventory/Inventory');
 
 		}
-
 	}
-
-
-
-
 }
 

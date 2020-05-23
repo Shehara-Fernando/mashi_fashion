@@ -25,12 +25,12 @@ class UsersModel extends CI_Model {
 			);
 		}
 	}
- // to check whether the user email and nic is existing
+ // to check whether the user email and nic is existing and enter data if it is not existing
 	public function create($userdata) {
-		$query = $this->db->select('*')->from('users')->where('user_nic',$userdata['user_nic']);
+		$query = $this->db->select('*')->from('users')->where('nic',$userdata['user_nic']);
 		$nic = $query->get()->result_array();
 
-		$query = $this->db->select('*')->from('users')->where('user_email',$userdata['user_email']);
+		$query = $this->db->select('*')->from('users')->where('email',$userdata['user_email']);
 		$email = $query->get()->result_array();
 
 		if (count($nic) >= 1 || count($email) >= 1) {

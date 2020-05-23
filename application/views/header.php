@@ -86,7 +86,7 @@
 	<div id="layoutSidenav_nav">
 
 
-		<nav class="sb-sidenav accordion sb-sidenav-light" style="background: #0062cc" id="sidenavAccordion">
+		<nav class="sb-sidenav accordion sb-sidenav-dark"  id="sidenavAccordion">
             <div class="sb-sidenav-menu">
 				<div class="nav">
 					<a class="nav-link" href="<?php echo  base_url('dashboard');?>"
@@ -102,7 +102,7 @@
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-shopping-basket "></i>
 						</div>
-						Inventory
+						Products
 						<div class="sb-sidenav-collapse-arrow">
 							<i class="fas fa-angle-down"></i>
 						</div>
@@ -114,14 +114,11 @@
 							<a class="nav-link" href="<?php echo base_url('inventory/Inventory');?>">
 								Items
 							</a>
-							<a class="nav-link" href="<?php echo base_url('inventory/ItemStock');?>">
-								Item Stocks
+							<a class="nav-link" href="<?php echo base_url('inventory/Categories');?>">
+								Product Categories
 							</a>
-							<a class="nav-link" href="<?php echo base_url('inventory/Materials');?>">
-								Materials
-							</a>
-							<a class="nav-link" href="<?php echo base_url('inventory/MaterialStock');?>">
-								Material Stocks
+							<a class="nav-link" href="<?php echo base_url('inventory/Types');?>">
+								Product Types
 							</a>
 						</nav>
 					</div>

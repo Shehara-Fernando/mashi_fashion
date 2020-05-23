@@ -107,11 +107,8 @@
 								</div>
 								<!--end modal-->
 							</div>
-							<div class="form-row">
-								<div class="col col-md-6">
-
-								</div>
-								<div class="form-group col col-md-4 w-12 text-right">
+							<div class="row justify-content-end">
+								<div class="form-group  col-md-4 text-right">
 									<label>Sub Total</label>
 									<input type="text" class="form-control" id="disabledTextInput"placeholder="Disabled input">
 								</div>
