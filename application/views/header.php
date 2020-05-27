@@ -15,6 +15,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<link href="<?php echo base_url();?>assets/css/styles.css "rel="stylesheet" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+	<!-- Base URL -->
+	<script>var base_url = '<?php echo site_url() ?>';</script>
 	<style>
 		.form-error {
 			color: #ff0000;
@@ -23,7 +25,7 @@
 	</style>
 </head>
 <body class="sb-nav-fixed">
-<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #e83e8c;">
+<nav class="sb-topnav navbar navbar-expand navbar-light" style="background-color: #9fcdff;">
 	<a class="navbar-brand" href="index.html">Mashi Fashion</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
 	><!-- Navbar Search-->
 
@@ -47,8 +49,8 @@
 				<a class="dropdown-item" href="#">Profile</a>
 				<div class="dropdown-divider"></div>
 				<button type="button" class="btn btn-link" data-toggle="modal" data-target="#logout">
-						<i class="glyphicon glyphicon-plus"></i>
-						Logout
+					<i class="glyphicon glyphicon-plus"></i>
+					Logout
 				</button>
 
 			</div>
@@ -74,20 +76,20 @@
 			</div>
 			<div class="modal-footer">
 				<form action="<?php echo base_url('login/Login/logout');?>" method="post">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				<button type="submit" class="btn btn-primary">Logout</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn btn-primary">Logout</button>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
 
-   <div id="layoutSidenav">
+<div id="layoutSidenav">
 	<div id="layoutSidenav_nav">
 
 
 		<nav class="sb-sidenav accordion sb-sidenav-dark"  id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
+			<div class="sb-sidenav-menu">
 				<div class="nav">
 					<a class="nav-link" href="<?php echo  base_url('dashboard');?>"
 					>
@@ -109,8 +111,6 @@
 					</a>
 					<div class="collapse" id="collapseInventory" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="<?php echo base_url('inventory/InventoryReport');?>">Inventory
-							</a>
 							<a class="nav-link" href="<?php echo base_url('inventory/Inventory');?>">
 								Items
 							</a>
@@ -119,6 +119,25 @@
 							</a>
 							<a class="nav-link" href="<?php echo base_url('inventory/Types');?>">
 								Product Types
+							</a>
+							<a class="nav-link" href="<?php echo base_url('inventory/Unitsmeasure');?>">Units Measure
+							</a>
+						</nav>
+					</div>
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchases" aria-expanded="false" aria-controls="collapsePurchases"
+					>
+						<div class="sb-nav-link-icon">
+							<i class="fas fa-store"></i>
+						</div>
+						Inventory
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down"></i>
+						</div>
+					</a>
+					<div class="collapse" id="collapsePurchases" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+						<nav class="sb-sidenav-menu-nested nav">
+							<a class="nav-link" href="<?php echo base_url('stocks/InventoryReport');?>">
+								Inventory Reports
 							</a>
 						</nav>
 					</div>

@@ -52,7 +52,7 @@
 								</div>
 								<div class="form-group col-md-2">
 									<label>Total Price</label>
-									<input type="text" id="total_price" name="total_price" data-validation="number">
+									<input type="text" id="total_price" name="total_price"  class="form-control" data-validation="number">
 								</div>
 							</div>
 						</form>

@@ -18,7 +18,7 @@
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 					<tr>
-						<th>Customer Name</th>
+						<th> Name</th>
 						<th>NIC</th>
 						<th>Gender</th>
 						<th>Address</th>
@@ -67,25 +67,25 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<form id="addcustomer" action="<?php echo base_url('customers/Customer/add_customer')?>" method="post" >
+							<form id="addcustomer" action="<?php echo base_url('customers/Customer/add_customer')?>"  method="post"  >
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="cus_name">First Name</label>
-										<input type="text" class="form-control" name="first_name" id="first_name"  placeholder="Enter Customer First Name  ">
+										<input type="text" class="form-control" name="first_name" id="first_name"  placeholder="Enter Customer First Name  "data-validation="required">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="cus_nic">Last Name </label>
-										<input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Enter Customer Last Name ">
+										<input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Enter Customer Last Name " data-validation="required">
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="cus_email"> Email</label>
-										<input type="email" class="form-control" name="email" id="email"  placeholder="Enter Email">
+										<input type="email" class="form-control" name="email" id="email"  placeholder="Enter Email"data-validation="email">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="cus_nic">NIC </label>
-										<input type="text" class="form-control" name="nic" id="nic"  placeholder="Enter Customer NIC  ">
+										<input type="text" class="form-control" name="nic" id="nic"  placeholder="Enter Customer NIC  " data-validation="custom" data-validation-regexp="[0-9]{9}[x|X|v|V]|[0-9]{11}[x|X|v|V]">
 									</div>
 								</div>
 
@@ -93,7 +93,7 @@
 
 									<div class="form-group col-md-6">
 										<label for="cus_address"> Telephone</label>
-										<input type="tel" class="form-control" name="telephone" id="telephone"  placeholder="Enter Telephone Number">
+										<input type="tel" class="form-control" name="telephone" id="telephone"  placeholder="Enter Telephone Number" data-validation-length="9-10">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="cus_address">Address </label>
@@ -109,7 +109,7 @@
 									</div>
 									<div class="form-group col-md-6">
 										<label for="city">City</label>
-										<select id="city_id" name="city_id" class="form-control">
+										<select id="city_id" name="city_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
 											<?php foreach ($cities as $city) {?>
 												<option value="<?php echo $city->id; ?>"><?php echo $city->name_en; ?></option>
@@ -120,7 +120,7 @@
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="district">District</label>
-										<select id="district_id" name="district_id" class="form-control">
+										<select id="district_id" name="district_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
 											<?php foreach ($districts as $district) {?>
 												<option value="<?php echo $district->id; ?>"><?php echo $district->name_en?></option>
@@ -129,7 +129,7 @@
 									</div>
 									<div class="form-group col-md-6">
 										<label for="province">Province</label>
-										<select id="province_id" name="province_id" class="form-control">
+										<select id="province_id" name="province_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
 											<?php foreach ($provinces as $province) {?>
 												<option value="<?php echo $province->id; ?>"><?php echo $province->name_en?></option>
@@ -143,14 +143,14 @@
 											<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
 											<div class="col-sm-10">
 												<div class="form-check">
-													<input class="form-check-input" type="radio" name="gender" id="gender" value="Male" checked>
-													<label class="form-check-label" for="cus_gender">
+													<input class="form-check-input" type="radio" name="gender" id="gender" value="Male"  data-validation="required">
+													<label class="form-check-label" for="cus_gender" >
 														Male
 													</label>
 												</div>
 												<div class="form-check">
-													<input class="form-check-input" type="radio" name="gender" id="gender" value="Female">
-													<label class="form-check-label" for="cus_gender">
+													<input class="form-check-input" type="radio" name="gender" id="gender" value="Female" data-validation="required">
+													<label class="form-check-label" for="cus_gender" >
 														Female
 													</label>
 												</div>
@@ -160,8 +160,8 @@
 								</div>
 								<div class="modal-footer">
 									<div class="text-right">
-										<button type="submit" class="btn btn-primary text-right">Submit</button>
-										<button type="reset" class="btn btn-danger text-right">Resset</button>
+										<button type="reset" class="btn btn-secondary text-right">Reset</button>
+										<button type="submit" class="btn btn-primary text-right">Create</button>
 									</div>
 								</div>
 							</form>

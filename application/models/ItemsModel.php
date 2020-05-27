@@ -6,9 +6,12 @@ class ItemsModel extends CI_Model {
 	// to get the data from db
 	public function select() {
 
-
+        $this->db->select('products.*,categories.name as categories,types.name as types,unit_measure.name as unit_measure');
 		$this->db->from('products');
-		$this->db->order_by('id', 'asd');
+		$this->db->join('categories','categories.id = products.category_id');
+		$this->db->join('types','types.id = products.type_id');
+		$this->db->join('unit_measure','unit_measure.id = products.units_id');
+		$this->db->order_by('products.name', 'asd');
 		$query = $this->db->get();
 		return $query->result();
 	}

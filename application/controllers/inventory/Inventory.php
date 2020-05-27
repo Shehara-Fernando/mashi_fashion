@@ -9,6 +9,7 @@ class Inventory extends CI_Controller {
 		$this->load->model('ItemsModel');
 		$this->load->model('CategoriesModel');
 		$this->load->model('TypesModel');
+		$this->load->model('Unitsmeasuremodel');
 	}
 
 	public function index()
@@ -18,7 +19,8 @@ class Inventory extends CI_Controller {
 			"items"         =>$this->ItemsModel->select(),
 			"categorys"     =>$this->CategoriesModel->select(),
 			"types"         =>$this->TypesModel->select(),
-			"item_categories"=>$this->ItemsModel->get_product_by_category(),
+			"units"     =>$this->Unitsmeasuremodel->select(),
+
 
 		);
 		// load the pages in the view
@@ -55,12 +57,14 @@ class Inventory extends CI_Controller {
 
 		// array to get the data in the form to insert the db
 		$items = array(
+			"is_sell" => $this->input->post('is_sell'),
 			"code"    => $this->input->post('code'),
 			"category_id" => $this->input->post('category_id'),
 			"type_id" => $this->input->post('type_id'),
 			"name"    => $this->input->post('name'),
 			"price"   => $this->input->post('price'),
 			"quantity"=> $this->input->post('quantity') ,
+			"units_id"=> $this->input->post('units_id') ,
 			"image"   => $image_data['file_name'],
 		);
 
@@ -69,6 +73,15 @@ class Inventory extends CI_Controller {
 		if ($result == true){
 			redirect('inventory/Inventory');
 
+		}
+	}
+	// to get the data inorder to load the javascript function
+	public  function get_categories(){
+		$is_sell =$this->input->post('is_sell');
+		$result = $this->CategoriesModel->get_categories($is_sell);
+		if ($result)
+		{
+			echo json_encode($result);
 		}
 	}
 }

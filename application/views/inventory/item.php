@@ -19,13 +19,13 @@
 					<thead>
 					<tr>
 
-						<th >Item Code</th>
-						<th >Item Name</th>
-						<th> Item Category And Type</th>
-						<th>Item Price</th>
-						<th>Quantity</th>
-						<th>Units Of Measure</th>
-						<th width="10%">Status</th>
+						<th> Code</th>
+						<th width="20%"> Name</th>
+						<th>  Categories </th>
+						<th>  Types</th>
+						<th class="text-right"> Price</th>
+						<th class="text-right">Quantity</th>
+						<th width="5%">Status</th>
 						<th class="text-center"width="10%">Action</th>
 					</tr>
 					</thead>
@@ -34,10 +34,10 @@
 						<tr>
 							<td><?php  echo $item->code; ?></td>
 							<td> <?php echo $item->name; ?></td>
-							<td><?php echo $item->category_id." ".$item->type_id; ?></td>
+							<td><?php echo $item->categories; ?></td>
+							<td><?php echo $item->types; ?></td>
 							<td class="text-right"><?php echo $item->price; ?></td>
-							<td class="text-right"><?php echo $item->quantity?></td>
-							<td></td>
+							<td class="text-right"><?php echo $item->quantity." ".$item->unit_measure?></td>
 							<td>
 								<?php if($item->status == 0) { ?>
 									<span class="badge badge-secondary">Inactive</span>
@@ -73,13 +73,23 @@
 						</div>
 						<div class="modal-body">
 							<form id="itemform" action="<?php echo base_url('inventory/Inventory/add_item')?>"method="post" enctype="multipart/form-data">
-								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" id="sales" name="sales" class="custom-control-input">
-									<label class="custom-control-label" for="sales">Sell</label>
-								</div>
-								<div class="custom-control custom-radio custom-control-inline">
-									<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-									<label class="custom-control-label" for="customRadioInline2">Purchase</label>
+								<div class="form-group col-md-6">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="is_sell" value="1" data-validation="required">
+												<label class="form-check-label" for="user_gender">
+													Sell
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="is_sell" value="0"data-validation="required" >
+												<label class="form-check-label" for="user_gender">
+													Purchase
+												</label>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="clearfix">&nbsp;</div>
 								<div class="form-row">
@@ -91,9 +101,7 @@
 										<label for="category_id">Item Category </label>
 										<select id="category_id" name="category_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
-											<?php foreach ($categorys as $category){?>
-												<option value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
-											<?php }?>
+
 										</select>
 									</div>
 								</div>
@@ -103,9 +111,7 @@
 
 										<select id="typeid" name="type_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
-											<?php foreach ($types as $type){?>
-												<option value="<?php echo $type->id; ?>"><?php echo$type->name?></option>
-											<?php } ?>
+
 										</select>
 									</div>
 									<div class="form-group col-md-6">
@@ -125,21 +131,29 @@
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="typeid">Units Of Measure</label>
-										<select id="typeid" name="type_id" class="form-control" data-validation="required">
+										<label for="units_id">Units Of Measure</label>
+										<select id="units_id" name="units_id" class="form-control">
 											<option selected disabled>Select one</option>
-											<option value=""></option>
+											<?php foreach ($units as $unit) { ?>
+												<option value="<?php echo $unit->id; ?>"><?php echo $unit->name; ?></option>
+											<?php } ?>
 										</select>
 									</div>
-								    <div class="form-group col-md-6">
-									<label for="item_image">Item Image</label>
-									<input type="file" name="item_image" id="item_image"  >
-								    </div>
+									<div class="form-group col-md-6">
+										<label>Image</label>
+										<div class="input-group mb-3 ">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="item_image" name="item_image">
+												<label class="custom-file-label">Choose file</label>
+											</div>
+										</div>
+									</div>
+
 								</div>
 								<div class="modal-footer">
 									<div class="text-right">
 										<button type="reset" class="btn btn-secondary text-right">Resset</button>
-										<button type="submit" class="btn btn-primary text-right">Submit</button>
+										<button type="submit" class="btn btn-primary text-right">Create</button>
 									</div>
 								</div>
 							</form>
@@ -150,4 +164,27 @@
 			<!--end modal-->
 		</div>
 	</main>
+	<script>
+		$(document).ready(function() {
+			$('input:radio').change(function() {
+				var is_sell = $("input[name='is_sell']:checked").val();
+				$.ajax({
+					type: 'post',
+					url: base_url + 'inventory/Inventory/get_categories',
+					async: false,
+					dataType: 'json',
+					data: {'is_sell': is_sell},
+					success: function (response) {
+						$('#category_id').closest("option")remove();
+						for (var i = 0; i<response.length; i++){
+							$('#category_id').append('<option value="'+ response[i].id+'">'+response[i].name+'</option>')
+
+						}
+					},
+				});
+			});
+
+
+		})
+	</script>
 

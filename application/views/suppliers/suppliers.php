@@ -19,9 +19,9 @@
 				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 					<tr>
-						<th>Supplier Name</th>
-						<th>Supplier Email</th>
-						<th>Supplier contact number</th>
+						<th> Name</th>
+						<th> Email</th>
+						<th> Contact Number</th>
 						<th>Status </th>
 						<th class="text-center">Action</th>
 
@@ -79,7 +79,7 @@
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="sup_tel">Telephone Number</label>
-										<input type="tel" class="form-control" name="telephone_number" id="telephone_number"  placeholder="Enter Telephone number"data-validation="length" data-validation-length="9-10">
+										<input type="tel" class="form-control" name="telephone_number" id="telephone_number"  placeholder="Enter Telephone number" data-validation="length" data-validation-length="9-10">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="sup_address">Address </label>
@@ -106,15 +106,6 @@
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="province">Province</label>
-										<select id="province_id" name="province_id" class="form-control" data-validation="required">
-											<option selected disabled>Select one</option>
-											<?php foreach ($provinces as $province) {?>
-												<option value="<?php echo $province->id; ?>"><?php echo $province->name_en?></option>
-											<?php } ?>
-										</select>
-									</div>
-									<div class="form-group col-md-6">
 										<label for="district">District</label>
 										<select id="district_id" name="district_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
@@ -123,11 +114,20 @@
 											<?php } ?>
 										</select>
 									</div>
+									<div class="form-group col-md-6">
+										<label for="province">Province</label>
+										<select id="province_id" name="province_id" class="form-control" data-validation="required">
+											<option selected disabled>Select one</option>
+											<?php foreach ($provinces as $province) {?>
+												<option value="<?php echo $province->id; ?>"><?php echo $province->name_en?></option>
+											<?php } ?>
+										</select>
+									</div>
 								</div>
 								<div class="modal-footer">
 									<div class="text-right">
 										<button type="reset" class="btn btn-secondary text-right">Reset</button>
-										<button type="submit" class="btn btn-primary text-right">Submit</button>
+										<button type="submit" class="btn btn-primary text-right">Create</button>
 									</div>
 								</div>
 							</form>

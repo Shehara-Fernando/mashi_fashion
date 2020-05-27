@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Categories extends CI_Controller {
+class Unitsmeasure extends CI_Controller {
 	public function __construct() {
 		// to load the models inorder to get the data
 
 		parent::__construct();
-		$this->load->model('CategoriesModel');
+		$this->load->model('Unitsmeasuremodel');
 
 	}
 
@@ -15,26 +15,26 @@ class Categories extends CI_Controller {
 	{
 		// array to call the functions
 		$data = array(
-			"categories"     =>$this->CategoriesModel->select(),
+			"units"     =>$this->Unitsmeasuremodel->select(),
 
 		);
 
 		$this->load->view('header');
-		$this->load->view('inventory/productcategories',$data);
+		$this->load->view('inventory/unitsofmeasure',$data);
 		$this->load->view('footer');
 	}
-	public  function add_category()
+	public  function add_units()
 	{
-		$category = array(
+		$units = array(
 			"name"    => $this->input->post('name'),
-			"is_sell" => $this->input->post('is_sell'),
+
 
 		);
 
 		// to get the result
-		$result = $this->CategoriesModel->create($category);
+		$result = $this->Unitsmeasuremodel->create($units);
 		if ($result == true){
-			redirect('inventory/Categories');
+			redirect('inventory/Unitsmeasure');
 
 		}
 
@@ -44,4 +44,3 @@ class Categories extends CI_Controller {
 
 
 }
-

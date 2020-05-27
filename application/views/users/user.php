@@ -104,25 +104,33 @@
 											<?php } ?>
 										</select>
 									</div>
+
 									<div class="form-group col-md-6">
-										<label for="user_image">User Image</label>
-										<input type="file" name="user_image" id="user_image" class="form-control" >
+										<label>Image</label>
+										<div class="input-group mb-3 ">
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="user_image" name="user_image">
+												<label class="custom-file-label">Choose file</label>
+											</div>
+										</div>
 									</div>
-									<div class="form-group col-md-6">
-										<div class="row">
-											<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-											<div class="col-sm-10">
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="gender" id="gender" value="male" data-validation="required">
-													<label class="form-check-label" for="user_gender">
-														Male
-													</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" name="gender" id="gender" value="female"data-validation="required" >
-													<label class="form-check-label" for="user_gender">
-														Female
-													</label>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											<div class="row">
+												<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+												<div class="col-sm-10">
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="gender" id="gender" value="male" data-validation="required">
+														<label class="form-check-label" for="user_gender">
+															Male
+														</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="gender" id="gender" value="female"data-validation="required" >
+														<label class="form-check-label" for="user_gender">
+															Female
+														</label>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -132,7 +140,7 @@
 								<div class="modal-footer">
 									<div class="text-right">
 										<button type="reset" class="btn btn-secondary text-right">Reset</button>
-										<button type="submit" class="btn btn-primary text-right">Submit</button>
+										<button type="submit" class="btn btn-primary text-right">Create</button>
 									</div>
 								</div>
 						</form>
