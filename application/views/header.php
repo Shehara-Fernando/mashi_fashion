@@ -99,7 +99,7 @@
 						Dashboard
 					</a>
 
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory" aria-expanded="false" aria-controls="collapseInventory"
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProducts" aria-expanded="false" aria-controls="collapseProducts"
 					>
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-shopping-basket "></i>
@@ -109,7 +109,7 @@
 							<i class="fas fa-angle-down"></i>
 						</div>
 					</a>
-					<div class="collapse" id="collapseInventory" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+					<div class="collapse" id="collapseProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link" href="<?php echo base_url('inventory/Inventory');?>">
 								Items
@@ -124,7 +124,7 @@
 							</a>
 						</nav>
 					</div>
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchases" aria-expanded="false" aria-controls="collapsePurchases"
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory" aria-expanded="false" aria-controls="collapseInventory"
 					>
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-store"></i>
@@ -134,7 +134,7 @@
 							<i class="fas fa-angle-down"></i>
 						</div>
 					</a>
-					<div class="collapse" id="collapsePurchases" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+					<div class="collapse" id="collapseInventory" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link" href="<?php echo base_url('stocks/InventoryReport');?>">
 								Inventory Reports
