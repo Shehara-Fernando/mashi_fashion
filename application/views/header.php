@@ -161,24 +161,16 @@
 							</a>
 						</nav>
 					</div>
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSuppliers" aria-expanded="false" aria-controls="collapseSuppliers"
-					>
+
+
+					<a class="nav-link" href="<?php echo base_url('suppliers/suppliers');?>">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-users "></i>
 						</div>
 						Suppliers
-						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down">
-							</i>
-						</div>
+
 					</a>
-					<div class="collapse" id="collapseSuppliers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="<?php echo base_url('suppliers/suppliers');?>">
-								Suppliers
-							</a>
-						</nav>
-					</div>
+
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManufacturing" aria-expanded="false" aria-controls="collapseManufacturing"
 					>
 						<div class="sb-nav-link-icon">
@@ -200,23 +192,15 @@
 							</a>
 						</nav>
 					</div>
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomers" aria-expanded="false" aria-controls="collapseCustomers"
-					>
+
+
+					<a class="nav-link" href="<?php echo base_url('customers/customer');?>">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-address-book " ></i>
 						</div>
 						Customers
-						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
-						</div>
 					</a>
-					<div class="collapse" id="collapseCustomers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="<?php echo base_url('customers/customer');?>">
-								Customers
-							</a>
-						</nav>
-					</div>
+
 
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSalesOrders" aria-expanded="false" aria-controls="collapseSalesOrders"
 					>
@@ -279,23 +263,15 @@
 							</a>
 						</nav>
 					</div>
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers"
-					>
+
+
+					<a class="nav-link" href="<?php echo base_url('users/users');?> ">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-user "></i>
 						</div>
 						Users
-						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
-						</div>
 					</a>
-					<div class="collapse" id="collapseUsers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="<?php echo base_url('users/users');?> ">
-								Users
-							</a>
-						</nav>
-					</div>
+
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBackups" aria-expanded="false" aria-controls="collapseBackups"
 					>
 						<div class="sb-nav-link-icon">
