@@ -61,27 +61,33 @@
 							<form id="categoryform" action="<?php echo base_url('inventory/Categories/add_category')?>"method="post" enctype="multipart/form-data">
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<div class="col-sm-12">
-											<div class="form-check form-check-inline ">
-												<input class="form-check-input" type="radio" name="is_sell" id="sell" value="1" data-validation="required">
-												<label class="form-check-label" for="user_gender">
-													Sell
-												</label>
-											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="is_sell" id="purchase" value="0"data-validation="required" >
-												<label class="form-check-label" for="user_gender">
-													Purchase
-												</label>
+										<div class="form-group row">
+											<label for="inputPassword" class="col-sm-2 col-form-label">Is Sell</label>
+											<div class="col-sm-10">
+												<select id="is_sell" name="is_sell" class="form-control" data-validation="required">
+													<option selected disabled>Select one</option>
+													<option value="1">Sell</option>
+													<option value="0">Purchase</option>
+												</select>
 											</div>
 										</div>
-
 									</div>
-									<div class="form-group row">
-										<label for="item_code"> Name </label>
-										<div class="col-sm-10">
-											<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Category Name " data-validation="required">
-
+									<div class="form-group col-md-6">
+										<div class="form-group row">
+											<label for="inputPassword" class="col-sm-2 col-form-label">Code</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" name="code" id="code"  placeholder="Enter Code " data-validation="required">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<div class="form-group row">
+											<label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+											<div class="col-sm-10">
+												<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Category Name " data-validation="required">
+											</div>
 										</div>
 									</div>
 								</div>

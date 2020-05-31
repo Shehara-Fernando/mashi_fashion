@@ -116,7 +116,7 @@
 									</div>
 									<div class="form-group col-md-6">
 										<label for="province">Province</label>
-										<select id="province_id" name="province_id" class="form-control" data-validation="required">
+										<select id="province_id" name="province_id" class="form-control" data-validation="required" readonly="">
 											<option selected disabled>Select one</option>
 											<?php foreach ($provinces as $province) {?>
 												<option value="<?php echo $province->id; ?>"><?php echo $province->name_en?></option>
@@ -138,4 +138,28 @@
 			<!--end modal-->
 		</div>
 	</main>
+	<script>
+		$(document).ready(function () {
 
+			var district_id =""
+			$('#district_id').change(function () {
+				district_id  = $(this).val();
+				$.ajax({
+					type: 'post',
+					url: base_url + 'suppliers/Suppliers/get_province',
+					async: false,
+					dataType: 'json',
+					data: {'district_id' : district_id},
+					success: function (response) {
+						$('#province_id').children('option:not(:first)').remove();
+						for (var i = 0; i<response.length; i++){
+							$('#province_id').append('<option value="'+ response[i].id+'">'+response[i].name_en+'</option>')
+
+						}
+					},
+
+				});
+			})
+
+		})
+	</script>

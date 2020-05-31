@@ -83,7 +83,7 @@
 												</label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="is_sell" value="0"data-validation="required" >
+												<input class="form-check-input" type="radio" name="is_sell" value="0" data-validation="required" >
 												<label class="form-check-label" for="user_gender">
 													Purchase
 												</label>
@@ -94,22 +94,21 @@
 								<div class="clearfix">&nbsp;</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label for="item_code">Item Code</label>
-										<input type="text" class="form-control" name="code" id="code"  placeholder="Enter Item Code " data-validation="required">
-									</div>
-									<div class="form-group col-md-6">
 										<label for="category_id">Item Category </label>
 										<select id="category_id" name="category_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
-
 										</select>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="item_code">Item Code</label>
+										<input type="text" class="form-control" name="code" id="code" readonly>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="typeid">Item Type</label>
 
-										<select id="typeid" name="type_id" class="form-control" data-validation="required">
+										<select id="type_id" name="type_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
 
 										</select>
@@ -132,10 +131,10 @@
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="units_id">Units Of Measure</label>
-										<select id="units_id" name="units_id" class="form-control">
+										<select id="units_id" name="units_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
 											<?php foreach ($units as $unit) { ?>
-												<option value="<?php echo $unit->id; ?>"><?php echo $unit->name; ?></option>
+												<option value="<?php echo $unit->id; ?>"><?php echo $unit->unit; ?></option>
 											<?php } ?>
 										</select>
 									</div>
@@ -143,8 +142,9 @@
 										<label>Image</label>
 										<div class="input-group mb-3 ">
 											<div class="custom-file">
-												<input type="file" class="custom-file-input" id="item_image" name="item_image">
 												<label class="custom-file-label">Choose file</label>
+												<input type="file" class="custom-file-input form-control"  id="item_image" name="item_image" data-validation="required">
+
 											</div>
 										</div>
 									</div>
@@ -165,9 +165,17 @@
 		</div>
 	</main>
 	<script>
+		// ajax to load the categories accordingly to the selected radio button
 		$(document).ready(function() {
-			$('input:radio').change(function() {
-				var is_sell = $("input[name='is_sell']:checked").val();
+			var is_sell = ''
+			$('input[type=radio][name=is_sell]').change(function() {
+				if (this.value == 0) {
+					is_sell = 0;
+				}
+				else if (this.value == 1) {
+					is_sell = 1;
+				}
+
 				$.ajax({
 					type: 'post',
 					url: base_url + 'inventory/Inventory/get_categories',
@@ -175,16 +183,47 @@
 					dataType: 'json',
 					data: {'is_sell': is_sell},
 					success: function (response) {
-						$('#category_id').closest("option")remove();
+						$('#category_id').children('option:not(:first)').remove();
 						for (var i = 0; i<response.length; i++){
 							$('#category_id').append('<option value="'+ response[i].id+'">'+response[i].name+'</option>')
 
 						}
 					},
 				});
+				// ajax get the type according to the selected radio button
+				$.ajax({
+					type: 'post',
+					url: base_url + 'inventory/Inventory/get_types',
+					async: false,
+					dataType: 'json',
+					data: {'is_sell': is_sell},
+					success: function (response) {
+						$('#type_id').children('option:not(:first)').remove();
+						for (var i = 0; i<response.length; i++){
+							$('#type_id').append('<option value="'+ response[i].id+'">'+response[i].name+'</option>')
+
+						}
+					},
+				});
 			});
+           // ajax to generate the code automatically
+			var category_id =""
+			$('#category_id').change(function () {
+				category_id  = $(this).val();
+				$.ajax({
+					type: 'post',
+					url: base_url + 'inventory/Inventory/generate_code',
+					async: false,
+					dataType: 'json',
+					data: {'category_id' : category_id},
+					success: function (response) {
+						$('#code').val(response);
 
+					}
 
-		})
+				});
+			})
+
+		});
 	</script>
 

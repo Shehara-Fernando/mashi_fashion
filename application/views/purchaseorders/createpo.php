@@ -105,9 +105,9 @@
 							<!--end modal-->
 						</div>
 						<div class="row justify-content-end">
-							<div class="form-group  col-md-4 text-right">
+							<div class="form-group row   text-right">
 								<label>Sub Total</label>
-								<input type="text" class="form-control" id="disabledTextInput"placeholder="Disabled input">
+								<input type="text" class="form-control" id="disabledTextInput"placeholder="Sub Total">
 							</div>
 						</div>
 

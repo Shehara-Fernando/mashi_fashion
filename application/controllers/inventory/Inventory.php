@@ -30,17 +30,6 @@ class Inventory extends CI_Controller {
 	}
 
 	public function add_item(){
-
-		//$this->form_validation->set_rules('item_code', 'Item Code', 'required');
-		//$this->form_validation->set_rules('cat_id', 'Item Category', 'required');
-		//$this->form_validation->set_rules('type_id', 'Item Type', 'required');
-		//$this->form_validation->set_rules('item_name', 'Item Name', 'required|alpha');
-		//$this->form_validation->set_rules('item_price', 'Item Price',  'required');
-		//$this->form_validation->set_rules('quantity', 'Quantity',  'required|max_length[20]');
-		//$this->form_validation->set_rules('item_image', 'Item Image',  'required');
-
-
-
 		// define upload image configurations
 		$config['upload_path'] = 'assets/images/item_images/';
 		$config['allowed_types'] = 'jpg|png';
@@ -58,7 +47,6 @@ class Inventory extends CI_Controller {
 		// array to get the data in the form to insert the db
 		$items = array(
 			"is_sell" => $this->input->post('is_sell'),
-			"code"    => $this->input->post('code'),
 			"category_id" => $this->input->post('category_id'),
 			"type_id" => $this->input->post('type_id'),
 			"name"    => $this->input->post('name'),
@@ -67,6 +55,15 @@ class Inventory extends CI_Controller {
 			"units_id"=> $this->input->post('units_id') ,
 			"image"   => $image_data['file_name'],
 		);
+		if ($this->ItemsModel->generate_code($this->input->post('category_id')))
+		{
+			$result = $this->ItemsModel->generate_code($this->input->post('category_id'));
+			$items['code'] = $result[0]->categories +  $result[0]->code + 1;
+		}else{
+			$items['code'] = 1;
+		}
+
+
 
 		// to get the result
 		$result = $this->ItemsModel->create($items);
@@ -83,6 +80,27 @@ class Inventory extends CI_Controller {
 		{
 			echo json_encode($result);
 		}
+	}
+	public  function get_types(){
+		$is_sell =$this->input->post('is_sell');
+		$result = $this->TypesModel->get_types($is_sell);
+		if ($result)
+		{
+			echo json_encode($result);
+		}
+	}
+	public  function  generate_code(){
+		$category_id =$this->input->post('category_id');
+		$result = $this->ItemsModel->generate_code($category_id);
+		if ($result)
+		{
+			echo  json_encode($result[0]->code + 1);
+
+		}
+		else {
+			echo json_encode(1);
+		}
+
 	}
 }
 

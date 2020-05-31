@@ -11,5 +11,7 @@ class ProvinceModel extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	// function to get the categories related to sell of purchase
+
 
 }

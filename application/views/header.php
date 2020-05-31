@@ -141,34 +141,27 @@
 							</a>
 						</nav>
 					</div>
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePurchases" aria-expanded="false" aria-controls="collapsePurchases"
-					>
+
+					<a class="nav-link collapsed" href="<?php echo base_url('purchaseorders/Purchaseorders');?>">
 						<div class="sb-nav-link-icon">
 							<i class="fas  fa-truck"></i>
 						</div>
 						Purchases
 						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
+							<i class="fas fa-angle-down">
+							</i>
 						</div>
 					</a>
-					<div class="collapse" id="collapsePurchases" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="<?php echo base_url('purchaseorders/Purchaseorders');?>">
-								Purchase Orders
-							</a>
-							<a class="nav-link" href="<?php echo base_url('purchaseorders/CreatePurchases');?>">
-								Create PO
-							</a>
-						</nav>
-					</div>
 
-
-					<a class="nav-link" href="<?php echo base_url('suppliers/suppliers');?>">
+					<a class="nav-link collapsed" href="<?php echo base_url('suppliers/suppliers');?>">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-users "></i>
 						</div>
 						Suppliers
-
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down">
+							</i>
+						</div>
 					</a>
 
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseManufacturing" aria-expanded="false" aria-controls="collapseManufacturing"
@@ -193,28 +186,28 @@
 						</nav>
 					</div>
 
-
-					<a class="nav-link" href="<?php echo base_url('customers/customer');?>">
+					<a class="nav-link collapsed" href="<?php echo base_url('customers/customer');?>">
 						<div class="sb-nav-link-icon">
-							<i class="fas fa-address-book " ></i>
+							<i class="fas fa-address-book"></i>
 						</div>
 						Customers
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down">
+							</i>
+						</div>
 					</a>
 
 
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSalesOrders" aria-expanded="false" aria-controls="collapseSalesOrders"
-					>
+					<a class="nav-link collapsed" href="<?php echo base_url('orders/Orders');?>">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-shopping-cart "></i>
 						</div>
 						Sales Orders
 						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
+							<i class="fas fa-angle-down">
+							</i>
 						</div>
 					</a>
-					<div class="collapse" id="collapseSalesOrders" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="<?php echo base_url('orders/Orders');?>">Sales Orders</a><a class="nav-link" href="<?php echo base_url('orders/CreateOrders');?>">Create Sales Orders</a></nav>
-					</div>
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNotifications" aria-expanded="false" aria-controls="collapseNotifications"
 					>
 						<div class="sb-nav-link-icon">
@@ -228,9 +221,7 @@
 					</a>
 					<div class="collapse" id="collapseNotifications" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="<?php echo base_url('notifications/notifications');?>">
-								Notification
-							</a>
+
 						</nav>
 					</div>
 
@@ -264,13 +255,17 @@
 						</nav>
 					</div>
 
-
-					<a class="nav-link" href="<?php echo base_url('users/users');?> ">
+					<a class="nav-link collapsed" href="<?php echo base_url('users/users');?>">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-user "></i>
 						</div>
 						Users
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down">
+							</i>
+						</div>
 					</a>
+
 
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBackups" aria-expanded="false" aria-controls="collapseBackups"
 					>

@@ -48,6 +48,18 @@ class ItemsModel extends CI_Model {
 
 	}
 
+	public function generate_code($category_id){
+
+		$this->db->select('products.*, categories.code as categories');
+		$this->db->from('products');
+		$this->db->join('categories','categories.id = products.category_id' );
+		$this->db->where('category_id', $category_id);
+		$this->db->order_by('products.id','desc');
+		$this->db->limit(1);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 
 
 }

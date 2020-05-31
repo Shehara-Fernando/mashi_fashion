@@ -23,11 +23,14 @@ class Categories extends CI_Controller {
 		$this->load->view('inventory/productcategories',$data);
 		$this->load->view('footer');
 	}
+	// code to insert data to the database
 	public  function add_category()
 	{
 		$category = array(
-			"name"    => $this->input->post('name'),
 			"is_sell" => $this->input->post('is_sell'),
+			"code"    => $this->input->post('code'),
+			"name"    => $this->input->post('name'),
+
 
 		);
 

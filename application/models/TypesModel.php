@@ -27,5 +27,14 @@ class TypesModel extends CI_Model{
 		}
 
 	}
+	public function get_types($is_sell)
+	{
+		$this->db->from('types');
+		$this->db->where('is_sell',$is_sell);
+		$this->db->order_by('name', 'asd');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 
 }

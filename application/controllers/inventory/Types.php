@@ -17,6 +17,8 @@ class Types extends CI_Controller {
 			"categories"     =>$this->CategoriesModel->select(),
 			"types" =>$this->TypesModel->select(),
 
+
+
 		);
 		$this->load->view('header');
 		$this->load->view('inventory/producttypes',$data);
@@ -38,6 +40,8 @@ class Types extends CI_Controller {
 
 		}
 	}
+
+
 
 
 

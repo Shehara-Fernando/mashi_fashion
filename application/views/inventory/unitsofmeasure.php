@@ -19,30 +19,32 @@
 					<thead>
 					<tr>
 						<th width="40%">Units Name</th>
+						<th>Unit</th>
 						<th width="10%">Status</th>
 						<th class="text-center"width="10%">Action</th>
 					</tr>
 					</thead>
 					<tbody>
 					<?php foreach ($units as $unit) {?>
-					<tr>
-						<td><?php echo $unit->name ; ?></td>
-						<td class="text-center" >
-							<?php if($unit->status == 0) { ?>
-							<span class="badge badge-secondary">Inactive</span>
-							<?php } else { ?>
-							<span class="badge badge-success">Active</span>
-							<?php } ?>
-						</td>
-						<td>
-							<button type="button" class="btn btn-sm btn-secondary"> <i class="fas fa-pencil-alt"></i> </button>
-							<?php if($unit->status == 0) { ?>
-							<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
-							<?php } elseif($unit->status == 1) { ?>
-							<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
-							<?php } ?>
-						</td>
-					</tr>
+						<tr>
+							<td><?php echo $unit->name ; ?></td>
+							<td><?php echo  $unit->unit ;?> </td>
+							<td class="text-center" >
+								<?php if($unit->status == 0) { ?>
+									<span class="badge badge-secondary">Inactive</span>
+								<?php } else { ?>
+									<span class="badge badge-success">Active</span>
+								<?php } ?>
+							</td>
+							<td>
+								<button type="button" class="btn btn-sm btn-secondary"> <i class="fas fa-pencil-alt"></i> </button>
+								<?php if($unit->status == 0) { ?>
+									<button type="button" class="btn btn-sm btn-success"><i class="fas fa-check"></i></button>
+								<?php } elseif($unit->status == 1) { ?>
+									<button type="button" class="btn btn-sm btn-danger"><i class="fas fa-times" ></i></button>
+								<?php } ?>
+							</td>
+						</tr>
 					<?php  } ?>
 					</tbody>
 				</table>
@@ -64,6 +66,10 @@
 									<div class="form-group col-md-6">
 										<label for="item_code"> Name </label>
 										<input type="text" class="form-control" name="name" id="name"  placeholder="Enter Unit Name " data-validation="required">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="item_code"> Unit </label>
+										<input type="text" class="form-control" name="unit" id="unit"  placeholder="Enter Unit Name " data-validation="required">
 									</div>
 								</div>
 

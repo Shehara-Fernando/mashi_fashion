@@ -27,6 +27,7 @@ class Unitsmeasure extends CI_Controller {
 	{
 		$units = array(
 			"name"    => $this->input->post('name'),
+			"unit"  =>$this->input->post('unit'),
 
 
 		);
