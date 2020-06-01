@@ -65,7 +65,7 @@ class Suppliers extends CI_Controller {
 	// to get the data inorder to load the javascript function
 	public  function get_province(){
 		$province_id =$this->input->post('province_id');
-		$result = $this->SuppliersModel->get_province($province_id);
+		$result = $this->ProvinceModel->get_province($province_id);
 		if ($result)
 		{
 			echo json_encode($result);

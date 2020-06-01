@@ -141,7 +141,7 @@
 	<script>
 		$(document).ready(function () {
 
-			var district_id =""
+			var district_id = ''
 			$('#district_id').change(function () {
 				district_id  = $(this).val();
 				$.ajax({
@@ -154,6 +154,7 @@
 						$('#province_id').children('option:not(:first)').remove();
 						for (var i = 0; i<response.length; i++){
 							$('#province_id').append('<option value="'+ response[i].id+'">'+response[i].name_en+'</option>')
+
 
 						}
 					},

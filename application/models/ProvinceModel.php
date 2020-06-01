@@ -11,7 +11,21 @@ class ProvinceModel extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	// function to get the categories related to sell of purchase
+
+
+	public function get_province($province_id)
+	{
+
+		$this->db->select('districts.*, provinces.name_en as provinces');
+		$this->db->from('districts');
+		$this->db->join('provinces','provinces.id = districts.province_id' );
+		$this->db->where('districts.province_id ', $province_id);
+		$this->db->order_by('districts.id', 'asd');
+		$query = $this->db->get();
+		return $query->result();
+
+	}
 
 
 }
+
