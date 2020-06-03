@@ -106,6 +106,17 @@
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
+										<label for="city">Postal Code</label>
+										<select id="postcode" name="postcode" class="form-control" data-validation="required" disabled>
+											<option selected disabled>Select one</option>
+											<?php foreach ($cities as $city) {?>
+												<option value="<?php echo $city->id; ?>"><?php echo $city->postcode; ?></option>
+											<?php } ?>
+
+										</select>
+
+									</div>
+									<div class="form-group col-md-6">
 										<label for="district">District</label>
 										<select id="district_id" name="district_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
@@ -114,6 +125,9 @@
 											<?php } ?>
 										</select>
 									</div>
+
+								</div>
+								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="province">Province</label>
 										<select id="province_id" name="province_id" class="form-control" data-validation="required" readonly="">
@@ -161,6 +175,23 @@
 
 				});
 			})
+			var city_id =""
+			$('#city_id').change(function () {
+				city_id  = $(this).val();
+				$.ajax({
+					type: 'post',
+					url: base_url + 'suppliers/Suppliers/get_postcode',
+					async: false,
+					dataType: 'json',
+					data: {'city_id' : city_id},
+					success: function (response) {
+						$('#postcode').val(response);
+
+					}
+
+				});
+			})
+
 
 		})
 	</script>

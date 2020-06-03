@@ -124,23 +124,7 @@
 							</a>
 						</nav>
 					</div>
-					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory" aria-expanded="false" aria-controls="collapseInventory"
-					>
-						<div class="sb-nav-link-icon">
-							<i class="fas fa-store"></i>
-						</div>
-						Inventory
-						<div class="sb-sidenav-collapse-arrow">
-							<i class="fas fa-angle-down"></i>
-						</div>
-					</a>
-					<div class="collapse" id="collapseInventory" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-						<nav class="sb-sidenav-menu-nested nav">
-							<a class="nav-link" href="<?php echo base_url('stocks/InventoryReport');?>">
-								Inventory Reports
-							</a>
-						</nav>
-					</div>
+
 
 					<a class="nav-link collapsed" href="<?php echo base_url('purchaseorders/Purchaseorders');?>">
 						<div class="sb-nav-link-icon">
@@ -208,6 +192,27 @@
 							</i>
 						</div>
 					</a>
+
+					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventory" aria-expanded="false" aria-controls="collapseInventory"
+					>
+						<div class="sb-nav-link-icon">
+							<i class="fas fa-store"></i>
+						</div>
+						Inventory
+						<div class="sb-sidenav-collapse-arrow">
+							<i class="fas fa-angle-down"></i>
+						</div>
+					</a>
+					<div class="collapse" id="collapseInventory" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+						<nav class="sb-sidenav-menu-nested nav">
+							<a class="nav-link" href="<?php echo base_url('stocks/InventoryReport');?>">
+								Inventory Reports
+							</a>
+							<a class="nav-link" href="<?php echo base_url('stocks/InventoryReport');?>">
+								Stocks
+							</a>
+						</nav>
+					</div>
 					<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNotifications" aria-expanded="false" aria-controls="collapseNotifications"
 					>
 						<div class="sb-nav-link-icon">

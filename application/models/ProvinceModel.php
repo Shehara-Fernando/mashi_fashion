@@ -27,5 +27,6 @@ class ProvinceModel extends CI_Model {
 	}
 
 
+
 }
 

@@ -12,12 +12,12 @@
                     <div class="card-body">
                         <form>
                             <div class="form-row">
-                            <div class="form-group col-sm-6 w-25">
+                            <div class="form-group col-md-4 w-25">
                                 <label >Customer</label>
                                 <select id="cus_id" name="cus_id" class="form-control">
                                     <option selected disabled>Select one</option></select>
                             </div>
-                            <div class="form-group col-md-6 text-right">
+                            <div class="form-group col-md-4 text-right">
                                 <label >Date</label>
                                 <input type="date" class="form-control" id="date">
                             </div>

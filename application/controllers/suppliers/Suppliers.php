@@ -50,8 +50,16 @@ class Suppliers extends CI_Controller {
 			"province_id"=> $this->input->post('province_id'),
 			"district_id"=> $this->input->post('district_id'),
 			"city_id"    => $this->input->post('city_id'),
+			"postcode"  =>  $this->input->post('postcode'),
 
 		);
+		if ($this->CityModel->generate_code($this->input->post('postcode')))
+		{
+			$result = $this->CityModel->generate_code($this->input->post('postcode'));
+			$suppliersdata['postcode']=   $result[0]->postcode + 1;
+		}else{
+			$suppliersdata['postcode']= 1;
+		}
 
 		// to get the result
 		$result = $this->SuppliersModel->create($suppliersdata);
@@ -70,5 +78,16 @@ class Suppliers extends CI_Controller {
 		{
 			echo json_encode($result);
 		}
+	}
+	public  function  get_postcode(){
+		$postcode =$this->input->post('postcode');
+		$result = $this->CityModel->generate_postcode($postcode);
+		if ($result)
+		{
+			echo json_encode($result);
+
+		}
+
+
 	}
 }

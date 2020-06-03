@@ -116,23 +116,12 @@
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">
-											<div class="row">
-												<legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-												<div class="col-sm-10">
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="gender" id="gender" value="male" data-validation="required">
-														<label class="form-check-label" for="user_gender">
-															Male
-														</label>
-													</div>
-													<div class="form-check">
-														<input class="form-check-input" type="radio" name="gender" id="gender" value="female"data-validation="required" >
-														<label class="form-check-label" for="user_gender">
-															Female
-														</label>
-													</div>
-												</div>
-											</div>
+											<label for="province">Gender</label>
+											<select id="gender" name="gender" class="form-control" data-validation="required">
+												<option selected disabled>Select one</option>
+												<option value="Male">Male</option>
+												<option value="Female">Female</option>
+											</select>
 										</div>
 									</div>
 								</div>

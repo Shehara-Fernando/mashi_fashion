@@ -15,7 +15,11 @@
 							<div class="form-group col-md-4 w-25">
 								<label >Supplier</label>
 								<select id="sup_id" name="sup_id" class="form-control" data-validation="required">
-									<option selected disabled>Select One</option></select>
+									<option selected disabled>Select One</option>
+								<?php foreach ($suppliers as $supplier) {?>
+									<option value="<?php echo $supplier->id; ?>"><?php echo $supplier->name ;?></option>
+								<?php } ?>
+								</select>
 							</div>
 							<div class="form-group col-md-4 ">
 								<label >Date</label>
@@ -28,6 +32,7 @@
 						</div>
 						<div class="table-responsive">
 							<div class="text-right"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addPo">Add Row</button></div>
+							<div class="clearfix">&nbsp;</div>
 							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 								<tr>
@@ -41,11 +46,7 @@
 								</thead>
 								<tbody>
 								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+
 								</tr>
 								</td>
 								</tbody>
@@ -90,6 +91,14 @@
 														<input type="text" class="form-control" name="quantity" id="qty" placeholder="Enter Quantity" data-validation="number" data-validation-allowing="range[1;100]">
 													</div>
 												</div>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="item_type">Unit Measure</label>
+														<select id="type_id" name="type_id" class="form-control" data-validation="required">
+															<option selected disabled>Select One</option>
+														</select>
+													</div>
+												</div>
 
 												<div class="modal-footer">
 													<div class="text-right">
@@ -112,15 +121,16 @@
 						</div>
 
 				</div>
+				<div class="text-right ">
+					<button type="reset" class="btn btn-secondary text-right">Resset</button>
+					<button type="submit" class="btn btn-primary text-right">Order</button>
+				</div>
 			</div>
 
 			</form>
 
 		</div>
-		<div class="text-right mt-4">
-			<button type="reset" class="btn btn-secondary text-right">Resset</button>
-			<button type="submit" class="btn btn-primary text-right">Order</button>
-		</div>
+
 </div>
 </div>
 </main>
