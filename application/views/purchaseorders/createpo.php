@@ -23,11 +23,11 @@
 							</div>
 							<div class="form-group col-md-4 ">
 								<label >Date</label>
-								<input type="date" class="form-control" id="date">
+								<input type="date" class="form-control" id="date" data-validation="required">
 							</div>
 							<div class="form-group col-md-4 ">
 								<label> Recieved Date</label>
-								<input type="date" class="form-control" id="rec_date">
+								<input type="date" class="form-control" id="rec_date" data-validation="required">
 							</div>
 						</div>
 						<div class="table-responsive">

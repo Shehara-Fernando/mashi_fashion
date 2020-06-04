@@ -105,33 +105,25 @@
 										</select>
 									</div>
 
+								</div>
+								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label>Image</label>
-										<div class="input-group mb-3 ">
-											<div class="custom-file">
-												<input type="file" class="custom-file-input" id="user_image" name="user_image">
-												<label class="custom-file-label">Choose file</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											<label for="province">Gender</label>
-											<select id="gender" name="gender" class="form-control" data-validation="required">
-												<option selected disabled>Select one</option>
-												<option value="Male">Male</option>
-												<option value="Female">Female</option>
-											</select>
-										</div>
+										<label for="province">Gender</label>
+										<select id="gender" name="gender" class="form-control" data-validation="required">
+											<option selected disabled>Select one</option>
+											<option value="Male">Male</option>
+											<option value="Female">Female</option>
+										</select>
 									</div>
 								</div>
+							</div>
 
-								<div class="modal-footer">
-									<div class="text-right">
-										<button type="reset" class="btn btn-secondary text-right">Reset</button>
-										<button type="submit" class="btn btn-primary text-right">Create</button>
-									</div>
+							<div class="modal-footer">
+								<div class="text-right">
+									<button type="reset" class="btn btn-secondary text-right">Reset</button>
+									<button type="submit" class="btn btn-primary text-right">Create</button>
 								</div>
+							</div>
 						</form>
 					</div>
 				</div>
