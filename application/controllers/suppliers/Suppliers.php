@@ -72,16 +72,17 @@ class Suppliers extends CI_Controller {
 
 	// to get the data inorder to load the javascript function
 	public  function get_province(){
-		$province_id =$this->input->post('province_id');
-		$result = $this->ProvinceModel->get_province($province_id);
+		$district_id =$this->input->post('district_id');
+		$result = $this->ProvinceModel->get_province($district_id);
 		if ($result)
 		{
 			echo json_encode($result);
 		}
 	}
 	public  function  get_postcode(){
-		$postcode =$this->input->post('postcode');
-		$result = $this->CityModel->generate_postcode($postcode);
+		$city_id =$this->input->post('city_id');
+		$result = $this->CityModel->generate_postcode($city_id);
+
 		if ($result)
 		{
 			echo json_encode($result);
@@ -89,5 +90,13 @@ class Suppliers extends CI_Controller {
 		}
 
 
+	}
+	public  function get_district(){
+		$city_id =$this->input->post('city_id');
+		$result = $this->DistrictModel->get_district($city_id);
+		if ($result)
+		{
+			echo json_encode($result);
+		}
 	}
 }

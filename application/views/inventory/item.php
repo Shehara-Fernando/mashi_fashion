@@ -190,7 +190,7 @@
 						}
 					},
 				});
-				// ajax get the type according to the selected radio button
+				// ajax get the types according to the selected radio button
 				$.ajax({
 					type: 'post',
 					url: base_url + 'inventory/Inventory/get_types',

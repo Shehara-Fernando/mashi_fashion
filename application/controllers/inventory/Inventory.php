@@ -55,15 +55,6 @@ class Inventory extends CI_Controller {
 			"units_id"=> $this->input->post('units_id') ,
 			"image"   => $image_data['file_name'],
 		);
-		if ($this->ItemsModel->generate_code($this->input->post('category_id')))
-		{
-			$result = $this->ItemsModel->generate_code($this->input->post('category_id'));
-			$items['code'] = $result[0]->categories +  $result[0]->code + 1;
-		}else{
-			$items['code'] = 1;
-		}
-
-
 
 		// to get the result
 		$result = $this->ItemsModel->create($items);
@@ -89,16 +80,19 @@ class Inventory extends CI_Controller {
 			echo json_encode($result);
 		}
 	}
+	// function to get the code automatically
 	public  function  generate_code(){
 		$category_id =$this->input->post('category_id');
 		$result = $this->ItemsModel->generate_code($category_id);
-		if ($result)
+//  loading the code if the type equals to product
+		if ($result['type'] == 'product')
 		{
-			echo  json_encode($result[0]->code + 1);
+			$code = $result['data'][0]->code + 1;
+			echo json_encode($result['data'][0]->categories."".$code);
 
 		}
-		else {
-			echo json_encode(1);
+		elseif($result['type'] == 'category') {
+			echo json_encode($result['data'][0]->code."1");
 		}
 
 	}

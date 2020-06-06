@@ -72,11 +72,11 @@
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="user_fname">First Name</label>
-										<input type="text" class="form-control" name="first_name" id="first_name"  placeholder="Enter First Name" data-validation="required">
+										<input type="text" class="form-control" name="first_name" id="first_name"  placeholder="Enter First Name"  data-validation="custom" data-validation-regexp="[A-Z]|[a-z]">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="user_lname">Last Name</label>
-										<input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Enter Last Name" data-validation="required">
+										<input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Enter Last Name"  data-validation="custom" data-validation-regexp="[A-Z]|[a-z]">
 									</div>
 								</div>
 

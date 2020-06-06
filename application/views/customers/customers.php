@@ -71,11 +71,11 @@
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label for="cus_name">First Name</label>
-										<input type="text" class="form-control" name="first_name" id="first_name"  placeholder="Enter Customer First Name  "data-validation="required">
+										<input type="text" class="form-control" name="first_name" id="first_name"  placeholder="Enter Customer First Name  " data-validation="custom" data-validation-regexp="[A-Z]|[a-z]">
 									</div>
 									<div class="form-group col-md-6">
 										<label for="cus_nic">Last Name </label>
-										<input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Enter Customer Last Name " data-validation="required">
+										<input type="text" class="form-control" name="last_name" id="last_name"  placeholder="Enter Customer Last Name "  data-validation="custom" data-validation-regexp="[A-Z]|[a-z]">
 									</div>
 								</div>
 								<div class="form-row">
@@ -119,6 +119,10 @@
 								</div>
 								<div class="form-row">
 									<div class="form-group col-md-6">
+										<label for="city">Postal Code</label>
+										<input type="text" name="postcode" id="postcode" disabled class="form-control">
+									</div>
+									<div class="form-group col-md-6">
 										<label for="district">District</label>
 										<select id="district_id" name="district_id" class="form-control" data-validation="required">
 											<option selected disabled>Select one</option>
@@ -127,17 +131,13 @@
 											<?php } ?>
 										</select>
 									</div>
-									<div class="form-group col-md-6">
-										<label for="province">Province</label>
-										<select id="province_id" name="province_id" class="form-control" data-validation="required">
-											<option selected disabled>Select one</option>
-											<?php foreach ($provinces as $province) {?>
-												<option value="<?php echo $province->id; ?>"><?php echo $province->name_en?></option>
-											<?php } ?>
-										</select>
-									</div>
+
 								</div>
 								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label for="province">Province</label>
+										<input type="text" id="province_id" name="province_id" class="form-control" disabled>
+									</div>
 									<div class="form-group col-md-6">
 										<label for="province">Gender</label>
 										<select id="gender" name="gender" class="form-control" data-validation="required">
@@ -161,4 +161,63 @@
 			<!--end modal-->
 		</div>
 	</main>
+	<script>
+		$(document).ready(function () {
+
+			var district_id = ''
+			$('#district_id').change(function () {
+				district_id  = $(this).val();
+				$.ajax({
+					type: 'post',
+					url: base_url + 'customers/Customer/get_province',
+					async: false,
+					dataType: 'json',
+					data: {'district_id' : district_id},
+					success: function (response) {
+						$('#province_id').val(response[0].provinces);
+
+
+
+					},
+
+				});
+			})
+			var city_id =""
+			$('#city_id').change(function () {
+				city_id  = $(this).val();
+				$.ajax({
+					type: 'post',
+					url: base_url + 'customers/Customer/get_postcode',
+					async: false,
+					dataType: 'json',
+					data: {'city_id' : city_id},
+					success: function (response) {
+						$('#postcode').val(response[0].postcode);
+
+
+					}
+
+				});
+			})
+			var city_id =""
+			$('#city_id').change(function () {
+				city_id  = $(this).val();
+				$.ajax({
+					type: 'post',
+					url: base_url + 'suppliers/Suppliers/get_district',
+					async: false,
+					dataType: 'json',
+					data: {'city_id' : city_id},
+					success: function (response) {
+						$('#district_id').val(response[0].districts);
+
+
+					}
+
+				});
+			})
+
+
+		})
+	</script>
 

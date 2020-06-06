@@ -11,11 +11,11 @@ class CityModel extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function generate_postcode($postcode){
+	public function generate_postcode($city_id){
 
 		$this->db->select('*');
 		$this->db->from('cities');
-		$this->db->where('postcode', $postcode);
+		$this->db->where('id', $city_id);
 		$this->db->order_by('id','desc');
 		$query = $this->db->get();
 		return $query->result();

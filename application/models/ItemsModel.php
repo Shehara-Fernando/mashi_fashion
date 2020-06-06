@@ -57,7 +57,27 @@ class ItemsModel extends CI_Model {
 		$this->db->order_by('products.id','desc');
 		$this->db->limit(1);
 		$query = $this->db->get();
-		return $query->result();
+		if (count($query->result_array()) == 1) {
+			return  array(
+				"type" =>"product",
+				"data" =>$query->result()
+			);
+
+		}
+		else{
+
+			$this->db->from('categories');
+			$this->db->where('id',$category_id);
+			$query = $this->db->get();
+			return  array(
+				"type" =>"category",
+				"data" =>$query->result()
+			);
+
+
+
+		}
+
 	}
 
 
